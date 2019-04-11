@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head lang="cn-ZH">
+    <meta charset="UTF-8">
+    <link rel="SHORTCUT ICON" href="../img/logo/ico-B.ico">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/common.css">
+    <title>WEB1802注册页</title>
+</head>
+<body>
+<div class="container" id="Vue">
+    <div style="width:766px;margin:auto">
+        <h1 class="col-sm-12 text-center"><a href="../../index.html" title="返回首页"><img src="../img/logo.png" width="50" alt=""></a>注册页</h1>
+        <form  class="form-horizontal ">
+            <div class="form-group ">
+                <div class="col-sm-2 col-xs-2 text-right">
+                    <label class="control-label">用户名</label>
+                </div>
+                <div class="col-sm-7 col-xs-10">
+                    <input type="text" class="form-control" name="user_name" v-model="user_name" @blur="check_uname" autofocus />
+                </div>
+                <div class="col-sm-3 hidden-xs">
+                    <span class="help-block" id="name_message">6~12位数字字母下划线</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 text-right">
+                    <label  class="control-label">密码</label>
+                </div>
+                <div class="col-sm-7">
+                    <input type="password" class="form-control" name="user_pwd"/>
+                </div>
+                <div class="col-sm-3 hidden-xs">
+                    <span class="help-block">6~12位数字或字母</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 text-right">
+                    <label  class="control-label">qq</label>
+                </div>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" name="user_qq"/>
+                </div>
+                <div class="col-sm-3 hidden-xs">
+                    <span class="help-block">5~10位数字</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 text-right">
+                    <label  class="control-label">验证码</label>
+                </div>
+                <div class="col-sm-7">
+                    <div class="row">
+                        <div class="col-xs-7">
+                            <input type="text" :autofocus=yzmOk class="form-control" name="yzm" v-model="yzm"/>
+                        </div>
+                        <div class="col-xs-5" id="yzm" @click="loadyam">
+                            <img src="../php/yzm.php" alt="验证码" >看不清?换一张
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-3 hidden-xs">
+                    <span class="help-block">{{yzmOk}}4位小写字母或数字</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-7 col-sm-offset-2">
+                    <div class="checkbox">
+                        <label><input type="checkbox" v-model="consent">是否同意本站注册协议</label><br>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <input type="button" class="btn btn-primary  form-control" :disabled="!consent" @click="submit" value="提交"/>
+                        </div>
+                        <div class="col-xs-6">
+                            <input type="reset" class="btn btn-danger form-control"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--页脚加载-->
+<div class="my-footer">Copyright&copy;web1802</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+<script src="../js/header.js"></script>
+<!--发送验证码-->
+<script>
+    new Vue({
+        el:"#Vue",
+        data:{
+            rememberPwd:0,//记住密码
+            autoLogin:0,//自动登陆
+            consent:false,//同意注册协议
+            user_name:"",
+            yzm:"",
+            yzmOk:false,
+
+        },
+        methods:{
+            //检查用户名
+            check_uname:function(){
+                console.log(this.user_name);
+                $.get("../php/check_uname.php",{user_name:this.user_name}, function(res){
+                    res=JSON.parse(res);
+                    if (res.code===-1){
+                        $("#name_message").html(res.msg).addClass("bg-danger");
+                    }else{
+                        $("#name_message").html(res.msg).addClass("bg-success").removeClass("bg-danger");
+                    }
+                })
+            },
+            //加载验证码
+            loadyam:function(){
+                $("#yzm").html('<img style="-webkit-user-select: none;" src="../php/yzm.php">'+"看不清?换一张")
+            },
+            //注册请求php
+            submit:function(){
+                //此处应提前验证
+                if(this.yzm==""){
+                    this.yzmOk=true;
+                    alert("请输入验证码") ;
+                    return;
+                }
+                var data= $("form").serialize();//表单序列化
+                console.log(data);
+                $.ajax({
+                    type:"POST",
+                    url:'../php/register.php',
+                    data:data,
+                    dataType:"json",
+                    success:function(res){
+                        res=JSON.parse(res);
+                        if(res.code==1){alert(res.msg)}else{alert(res.msg)}
+                    },
+                    error:function(){alert("网络不好")}
+                })
+            },
+        },
+    })
+</script>
+</body>
+</html>

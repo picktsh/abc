@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="../img/logo/ico-B.ico">
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <title>web1802</title>
+</head>
+<body>
+  <div class="container">
+    <!--页主体开始行-->
+    <div class="row">
+      <!--页主体右侧课程内容-->
+      <div class="col-sm-3 col-sm-push-9">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <!--博主资料卡-->
+          <div class="panel panel-default hidden-xs">
+            <div class="panel-heading">
+              <div class="row">
+                <img src="../img/favicon.ico" alt="" class="bolgerHead col-xs-3  hidden-sm" >
+                <a href="" class="btn btn-default pull-right  col-xs-12 col-sm-4 col-md-3">关注</a>
+                <b class=" col-xs-6">tangtangtang</b>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="row justifyCenter">
+                <div class="col-sm-6 col-lg-3">原创 <br>11</a></div>
+                <div class="col-sm-6 col-lg-3 ">粉丝 <br>10</a></div>
+                <div class="col-sm-6 col-lg-3 ">喜欢 <br>22</a></div>
+                <div class="col-sm-6 col-lg-3 ">评论 <br>18</a></div>
+              </div>
+            </div>
+          </div>
+          <!--面试题集合----------------------------------------------------------->
+          <div class="panel panel-danger ">
+            <div class="panel-heading " role="tab" id="heading_blogList">
+              <h4 class="panel-title">
+                <a  role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_blogList"
+                    aria-expanded="false" aria-controls="collapse_blogList">
+                  js面试题集合 <span class="badge">4</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_blogList" class="panel-collapse collapse" role="tabpanel"aria-labelledby="heading_blogList">
+              <div class="panel-body"><a href="">js面试题</a></div>
+              <div class="panel-body"><a href="">SQL</a></div>
+              <div class="panel-body"><a href="">DDL</a></div>
+              <div class="panel-body"><a href="">DQL</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--左侧内容主体-------------------------------------------------------------------->
+      <div class="col-sm-9 col-sm-pull-3">
+        <!--路径导航-->
+        <ol class="breadcrumb">
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="#">好文章</a></li>
+          <li class="active">I/O阻塞</li>
+        </ol>
+        <!--内容主体-->
+        <div class="row">
+          <div class="col-xs-12 ">
+          <h1>操作系统I/O：阻塞和非阻塞</h1>
+          <span>2017年01月15日 20:09:05</span>
+          <span class="navbar-right">阅读数: <span>1903</span></span>
+          <hr >
+          <h4>操作系统I/O：阻塞和非阻塞</h4>
+
+          <p>操作系统内核对于I/O只有两种方式：阻塞和非阻塞。</p>
+          <p>
+            <b>调用阻塞I/O时，应用程序需要等待I/O完成才返回结果</b>
+            <span>，阻塞I/O的一个特点是调用之后一定要等到系统内核层面完成所有操作后，调用才结束。</span>
+          </p>
+          <p>
+            <b>调用非阻塞I/O</b>跟阻塞I/O的差别为 <b>  调用之后立即返回</b>，返回后，CPU的时间片可以用来处理其他事务，此时性能是提升的。但是非阻塞I/O的问题是：由于完整的I/O没有完成，立即返回的并不是业务层期望的数据，而仅仅是当前调用的状态。为了获取完整的数据，应用程序需要重复调用I/O操作来确认是否完成。这种重复调用判断操作是否完成的技术叫做轮询。
+          </p>
+          <p>轮询技术主要有以下四种：</p>
+          <p>1、read </p>
+          <p>最原始、性能最低，通过重复调用来检查I/O的状态来完成完整数据的读取。在得到数据前，CPU一直好用在等待上。</p>
+          <p>2、select</p>
+          <p>改进了read，通过对文件描述符上的事件状态来进行判断。有一个较弱的限制为由于它采用一个1024长度的数组来存储状态，所以它最多可以同时检查1024个文件描述符。</p>
+          <p>3、poll</p>
+          <p>对select改进，采用链表方式避免数组长度的限制，其次它能避免不需要的检查。担当文件描述符较多时，它的性能还是低下。</p>
+          <p>4、epoll</p>
+          <p>LInux下效率最高的I/O事件通知机制，在进入轮询的时候如果没有检查到I/O事件，将会进行休眠，直到事件发生将它唤醒。它是真实利用了事件通知、执行回调的方式，而不是遍历查询，所以不会浪费CPU，执行效率较高</p>
+          <p>5、kequeue</p>
+          <p>与epoll类似，仅在FreeBSD系统下存在。</p>
+          <!--文章尾部-->
+          <div class="text-info">
+            版权声明：本文为博主原创文章，未经博主允许不得转载。https://codet.xyz/data/html/article180605io.html
+
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--js引入部分-->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

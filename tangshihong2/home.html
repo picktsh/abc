@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+<head>
+    <meta charset="UTF-8">
+    <link rel="SHORTCUT ICON" href="./data/img/logo/ico-B.ico">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="data/css/bootstrap.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="./data/css/common.css">
+    <title>web1802</title>
+</head>
+<body >
+<!--页头------------------------------------------------------------------>
+<header id="headerBox" >页头加载中...</header>
+<!--页主体-->
+<div class="container">
+  <!--轮播图--------------------->
+  <div id="ad3"style="max-width:960px ;max-height:500px;margin:0 auto" class="carousel slide" data-ride="carousel"
+           data-interval="5000">
+          <ul class="carousel-inner list-unstyled" style="height:100%">
+              <li class="item active">
+                  <img src="data/img/home/banner1.png" alt=""/>
+              </li>
+              <li class="item">
+                  <img src="data/img/home/banner2.png" alt=""/>
+              </li>
+              <li class="item">
+                  <img src="data/img/home/banner3.png" alt=""/>
+              </li>
+              <li class="item">
+                  <img src="data/img/home/banner4.png" alt=""/>
+              </li>
+          </ul>
+          <!--序号指示器-->
+          <ul class="carousel-indicators">
+              <li data-target="#ad3" data-slide-to="0"></li>
+              <li data-target="#ad3" data-slide-to="1"></li>
+              <li data-target="#ad3" data-slide-to="2"></li>
+              <li data-target="#ad3" data-slide-to="3"></li>
+          </ul>
+          <!--上下张控制-->
+          <a class="left carousel-control" href="#ad3" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#ad3" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+          </a>
+      </div>
+  <!--导航条--------------------------->
+  <div class="row hidden-xs">
+      <div class="row hidden-xs">
+          <ul class="nav nav-justified  nav-tabs navbar-default">
+              <li class="active"><a href="" data-toggle="tab"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+              <li><a href="" data-toggle="tab"><span class="glyphicon glyphicon-send"></span> 学习路</a></li>
+              <li><a href="" data-toggle="tab"><span class="glyphicon glyphicon-list-alt"></span> 好文章</a></li>
+              <li><a href="" data-toggle="tab"><span class="glyphicon glyphicon-book"></span>分享</a></li>
+              <li><a href="" data-toggle="tab"><span class="glyphicon glyphicon-bookmark"></span>收藏</a></li>
+              <li><a href="" data-toggle="tab"><span class="glyphicon glyphicon-th-large"></span> 生活</a></li>
+              <li><a href="upload/index.php" data-toggle="tab"><span class="glyphicon glyphicon-comment"></span> 聊天室</a></li>
+          </ul>
+      </div>
+  </div>
+  <!--页主体开始行-->
+  <div class="row">
+      <!--左侧内容主体-------------------------------------------------------------------->
+      <div class="col-sm-9">
+					<!-- 路径导航 -->
+					<ol class="breadcrumb">
+						<li><a href="#">首页</a></li>
+						<li><a href="#">BootStrap</a></li>
+						<li class="active">响应式网页</li>
+					</ol>
+          <!--中间部分内容框-->
+          <div id="container-fluid" style="color:#555555">
+              <h1>BootStrap响应式网页--概览</h1><hr>
+              <h3>深入了解 Bootstrap 底层结构的关键部分，包括我们让 web 开发变得更好、更快、更强壮的最佳实践。</h3>
+              <h2>HTML5 文档类型</h2>
+              <h4>Bootstrap 使用到的某些 HTML 元素和 CSS 属性需要将页面设置为 HTML5 文档类型。在你项目中的每个页面都要参照下面的格式进行设置。</h4>
+              <div class="alert alert-info" role="alert">
+                  <code>&lt;!DOCTYPE html&gt;
+                      &lt;html lang="zh-CN"&gt;
+                      ...
+                      &lt;/html&gt;</code>
+              </div>
+              <div class="progress">
+                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                      <span class="sr-only"></span>
+                  </div>
+              </div>
+              <h1>移动设备优先</h1>
+              <div>在 Bootstrap 2 中，我们对框架中的某些关键部分增加了对移动设备友好的样式。而在 Bootstrap 3 中，我们重写了整个框架，使其一开始就是对移动设备友好的。这次不是简单的增加一些可选的针对移动设备的样式，而是直接融合进了框架的内核中。也就是说，<b>Bootstrap 是移动设备优先的。</b>针对移动设备的样式融合进了框架的每个角落，而不是增加一个额外的文件。</div>
+              div为了确保适当的绘制和触屏缩放，需要在 <span class="btn-danger">&lt;head&gt;</span> 之中添加 viewport 元数据标签。
+          </div>
+      </div>
+      <!--主体内容的右侧目录导航-------------------------------------------------------------->
+      <div class=" col-sm-3">
+        <!--页主体右侧课程内容-->
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <!--mysql----------------------------------------------------------->
+          <div class="panel panel-danger ">
+            <div class="panel-heading " role="tab" id="heading_mysql">
+              <h4 class="panel-title">
+                <a  role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_mysql"
+                   aria-expanded="false" aria-controls="collapse_mysql">
+                  MySQL <span class="badge">4</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_mysql" class="panel-collapse collapse" role="tabpanel"
+                 aria-labelledby="heading_mysql">
+              <div class="panel-body"><a href="">数据库服务器</a></div>
+              <div class="panel-body"><a href="">SQL</a></div>
+              <div class="panel-body"><a href="">DDL</a></div>
+              <div class="panel-body"><a href="">DQL</a></div>
+            </div>
+          </div>
+          <!--PHP------------------------------------------------------------->
+          <div class="panel panel-warning">
+            <div class="panel-heading" role="tab" id="heading_php">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                   href="#collapse_php" aria-expanded="false" aria-controls="collapse_php">
+                  PHP<span class="badge">7</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_php" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_php">
+              <div class="panel-body"><a href="">WEB服务器 </a></div>
+              <div class="panel-body"><a href="">变量和常量</a></div>
+              <div class="panel-body"><a href="">数据类型</a></div>
+              <div class="panel-body"><a href="">运算符和表达式</a></div>
+              <div class="panel-body"><a href="">分支结构</a></div>
+              <div class="panel-body"><a href="">循环结构-1</a></div>
+              <div class="panel-body"><a href="">数组</a></div>
+              <div class="panel-body"><a href="">预定义变量 </a></div>
+              <div class="panel-body"><a href="">函数</a></div>
+              <div class="panel-body"><a href="">PHP操作MySQL</a></div>
+              <div class="panel-body"><a href="">CRUD</a></div>
+            </div>
+          </div>
+          <!--HTMLBasic------------------------------------------------------------>
+          <div class="panel panel-info">
+            <div class="panel-heading" role="tab" id="heading_html">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                   href="#collapse_html" aria-expanded="false" aria-controls="collapse_html">HTMLBasic<span class="badge">9</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_html" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_html">
+              <div class="panel-body"><a href="">Web基础知识</a></div>
+              <div class="panel-body"><a href="">HTML快速入门</a></div>
+              <div class="panel-body"><a href="">文本</a></div>
+              <div class="panel-body"><a href="">图像和链接 </a></div>
+              <div class="panel-body"><a href="">表格</a></div>
+              <div class="panel-body"><a href="">列表</a></div>
+              <div class="panel-body"><a href="">结构标记</a></div>
+              <div class="panel-body"><a href="">表单</a></div>
+              <div class="panel-body"><a href="">新表单元素</a></div>
+            </div>
+          </div>
+          <!--JavaScriptBasic------------------------------------------------------>
+          <div class="panel panel-success">
+            <div class="panel-heading" role="tab" id="heading_javaScript">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                   href="#collapse_javaScript" aria-expanded="false" aria-controls="collapse_javaScript">
+                    JavaScriptBasic<span class="badge">11</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_javaScript" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_javaScript">
+              <div class="panel-body"><a href="">JavaScript 概述</a></div>
+              <div class="panel-body"><a href="">JavaScript 基础语法 </a></div>
+              <div class="panel-body"><a href="">变量和常量</a></div>
+              <div class="panel-body"><a href="">数据类型</a></div>
+              <div class="panel-body"><a href="">运算符和表达式</a></div>
+              <div class="panel-body"><a href="">函数-1</a></div>
+              <div class="panel-body"><a href="">分支结构</a></div>
+              <div class="panel-body"><a href="">循环结构-1</a></div>
+              <div class="panel-body"><a href="">创建和访问数组</a></div>
+              <div class="panel-body"><a href="">数组的常用方法 </a></div>
+              <div class="panel-body"><a href="">二维数组 </a></div>
+            </div>
+          </div>
+          <!--AJAX------------------------------------------------------------->
+          <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading_ajax">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                   href="#collapse_ajax" aria-expanded="false" aria-controls="collapse_ajax">
+                  AJAX<span class="badge">6</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_ajax" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_ajax">
+              <div class="panel-body"><a href="">AJAX </a></div>
+              <div class="panel-body"><a href="">XML语法</a></div>
+              <div class="panel-body"><a href="">XML解析</a></div>
+              <div class="panel-body"><a href="">JSON</a></div>
+              <div class="panel-body"><a href="">URL</a></div>
+              <div class="panel-body"><a href="">HTTP协议</a></div>
+              <div class="panel-body"><a href="">HTTP优化</a></div>
+            </div>
+          </div>
+          <!--CSS------------------------------------------------------------->
+          <div class="panel panel-danger">
+            <div class="panel-heading" role="tab" id="heading_css">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                   href="#collapse_css" aria-expanded="false" aria-controls="collapse_css">
+                  CSS3<span class="badge">19</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_css" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_css">
+              <div class="panel-body"><a href="">CSS 概述</a></div>
+              <div class="panel-body"><a href="">CSS 语法</a></div>
+              <div class="panel-body"><a href="">尺寸与边框</a></div>
+              <div class="panel-body"><a href="">框模型</a></div>
+              <div class="panel-body"><a href="">背景</a></div>
+              <div class="panel-body"><a href="">渐变</a></div>
+              <div class="panel-body"><a href="">文本格式化</a></div>
+              <div class="panel-body"><a href="">浮动</a></div>
+              <div class="panel-body"><a href="">显示</a></div>
+              <div class="panel-body"><a href="">列表</a></div>
+              <div class="panel-body"><a href="">定位</a></div>
+              <div class="panel-body"><a href="">复杂选择器</a></div>
+              <div class="panel-body"><a href="">内容生成</a></div>
+              <div class="panel-body"><a href="">弹性布局</a></div>
+              <div class="panel-body"><a href="">CSS Hack</a></div>
+              <div class="panel-body"><a href="">转换</a></div>
+              <div class="panel-body"><a href="">过渡</a></div>
+              <div class="panel-body"><a href="">动画</a></div>
+              <div class="panel-body"><a href="">CSS 优化</a></div>
+            </div>
+          </div>
+          <!--JavaScriptCore------------------------------------------------------------->
+          <div class="panel panel-warning">
+            <div class="panel-heading" role="tab" id="heading_JavaScriptCore">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                   href="#collapse_JavaScriptCore" aria-expanded="false" aria-controls="collapse_JavaScriptCore">
+                    JavaScriptCore<span class="badge">15</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_JavaScriptCore" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_JavaScriptCore">
+              <div class="panel-body"><a href="">String</a></div>
+              <div class="panel-body"><a href="">正则表达式</a></div>
+              <div class="panel-body"><a href="">正则表达式对象</a></div>
+              <div class="panel-body"><a href="">Math</a></div>
+              <div class="panel-body"><a href="">Date</a></div>
+              <div class="panel-body"><a href="">Number</a></div>
+              <div class="panel-body"><a href="">Boolean</a></div>
+              <div class="panel-body"><a href="">错误处理</a></div>
+              <div class="panel-body"><a href="">Functions</a></div>
+              <div class="panel-body"><a href="">Object</a></div>
+              <div class="panel-body"><a href="">JavaScript OOP</a></div>
+              <div class="panel-body"><a href="">原型与继承-1</a></div>
+              <div class="panel-body"><a href="">原型与继承-2</a></div>
+              <div class="panel-body"><a href="">ECMAScript 5 的新特性</a></div>
+              <div class="panel-body"><a href="">ECMAScript 6 的新特性</a></div>
+            </div>
+          </div>
+          <!--DOM------------------------------------------------------------->
+          <div class="panel panel-info">
+            <div class="panel-heading" role="tab" id="heading_DOM">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                   href="#collapse_DOM" aria-expanded="false" aria-controls="collapse_DOM">
+                    DOM<span class="badge">12</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_DOM" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_DOM">
+              <div class="panel-body"><a href="">DOM概述</a></div>
+              <div class="panel-body"><a href="">DOM树</a></div>
+              <div class="panel-body"><a href="">选取元素</a></div>
+              <div class="panel-body"><a href="">读取和修改节点对象-1</a></div>
+              <div class="panel-body"><a href="">读取和修改节点对象-2 </a></div>
+              <div class="panel-body"><a href="">增加</a></div>
+              <div class="panel-body"><a href="">删除和替换节点</a></div>
+              <div class="panel-body"><a href="">常用 HTML DOM 对象 </a></div>
+              <div class="panel-body"><a href="">BOM 概述</a></div>
+              <div class="panel-body"><a href="">window 对象</a></div>
+              <div class="panel-body"><a href="">window 常用子对象</a></div>
+              <div class="panel-body"><a href="">event 对象</a></div>
+            </div>
+          </div>
+          <!--JQuery------------------------------------------------------------->
+          <div class="panel panel-success">
+            <div class="panel-heading" role="tab" id="heading_JQuery">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                   href="#collapse_JQuery" aria-expanded="false" aria-controls="collapse_JQuery">
+                    JQuery<span class="badge">11</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_JQuery" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_JQuery">
+              <div class="panel-body"><a href="">jQuery</a></div>
+              <div class="panel-body"><a href="">jQuery选择器</a></div>
+              <div class="panel-body"><a href="">jQuery操作DOM</a></div>
+              <div class="panel-body"><a href="">jQuery事件-1</a></div>
+              <div class="panel-body"><a href="">jQuery类数组操作-2 </a></div>
+              <div class="panel-body"><a href="">jQuery动画效果</a></div>
+              <div class="panel-body"><a href="">jQuery UI</a></div>
+              <div class="panel-body"><a href="">开发插件</a></div>
+              <div class="panel-body"><a href="">使用插件</a></div>
+              <div class="panel-body"><a href="">AJAX的增强操作</a></div>
+              <div class="panel-body"><a href="">AJAX跨域请求</a></div>
+            </div>
+          </div>
+          <!--HTMLCore------------------------------------------------------------->
+          <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading_HTMLCore">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                   href="#collapse_HTMLCore" aria-expanded="false" aria-controls="collapse_HTMLCore">
+                    HTMLCore<span class="badge">13</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_HTMLCore" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_HTMLCore">
+              <div class="panel-body"><a href="">增强的表单</a></div>
+              <div class="panel-body"><a href="">视频处理</a></div>
+              <div class="panel-body"><a href="">音频处理</a></div>
+              <div class="panel-body"><a href="">Canvas绘图</a></div>
+              <div class="panel-body"><a href="">处理Canvas中的图像</a></div>
+              <div class="panel-body"><a href="">Chart.js 框架</a></div>
+              <div class="panel-body"><a href="">SVG</a></div>
+              <div class="panel-body"><a href="">Two.js 框架</a></div>
+              <div class="panel-body"><a href="">Geolocation</a></div>
+              <div class="panel-body"><a href="">拖放API</a></div>
+              <div class="panel-body"><a href="">Web Worker</a></div>
+              <div class="panel-body"><a href="">Web存储API</a></div>
+              <div class="panel-body"><a href="">WEB Socket</a></div>
+            </div>
+          </div>
+          <!--BootStrap------------------------------------------------------------->
+          <div class="panel panel-danger">
+            <div class="panel-heading " role="tab" id="heading_BootStrap">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                   href="#collapse_BootStrap" aria-expanded="false" aria-controls="collapse_BootStrap">
+                    BootStrap<span class="badge">6</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_BootStrap" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_BootStrap">
+              <div class="panel-body"><a href="">响应式网页</a></div>
+              <div class="panel-body"><a href="">Bootstrap起步</a></div>
+              <div class="panel-body"><a href="">全局CSS样式-1</a></div>
+              <div class="panel-body"><a href="">组件</a></div>
+              <div class="panel-body"><a href="">插件</a></div>
+              <div class="panel-body"><a href="">Bootstrap定制</a></div>
+            </div>
+          </div>
+          <!--NodeJS------------------------------------------------------------->
+          <div class="panel panel-warning">
+            <div class="panel-heading" role="tab" id="heading_NodeJS">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                   href="#collapse_NodeJS" aria-expanded="false" aria-controls="collapse_NodeJS">
+                    NodeJS<span class="badge">9</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_NodeJS" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_NodeJS">
+              <div class="panel-body"><a href="">Node.js 概述</a></div>
+              <div class="panel-body"><a href="">Node.js 全局对象</a></div>
+              <div class="panel-body"><a href="">模块</a></div>
+              <div class="panel-body"><a href="">MySQL 数据库</a></div>
+              <div class="panel-body"><a href="">MySQL 模块</a></div>
+              <div class="panel-body"><a href="">gulp入门</a></div>
+              <div class="panel-body"><a href="">gulp开发</a></div>
+              <div class="panel-body"><a href="">webpack入门</a></div>
+              <div class="panel-body"><a href="">webpack开发</a></div>
+            </div>
+          </div>
+          <!--VueJs------------------------------------------------------------->
+          <div class="panel panel-info">
+            <div class="panel-heading" role="tab" id="heading_VueJs">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                   href="#collapse_VueJs" aria-expanded="false" aria-controls="collapse_VueJs">
+                    VueJs<span class="badge">5</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_VueJs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_VueJs">
+              <div class="panel-body"><a href="">VueJS概述</a></div>
+              <div class="panel-body"><a href="">指令及组件</a></div>
+              <div class="panel-body"><a href="">自定义</a></div>
+              <div class="panel-body"><a href="">组件通信</a></div>
+              <div class="panel-body"><a href="">VueJS 组件</a></div>
+            </div>
+          </div>
+          <!--AngularJs------------------------------------------------------------->
+          <div class="panel panel-success">
+            <div class="panel-heading" role="tab" id="heading_AngularJs">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                   href="#collapse_AngularJs" aria-expanded="false" aria-controls="collapse_AngularJs">
+                    AngularJs<span class="badge">8</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_AngularJs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_AngularJs">
+              <div class="panel-body"><a href="">设计原则和模式</a></div>
+              <div class="panel-body"><a href="">AngularJS 起步</a></div>
+              <div class="panel-body"><a href="">组件-2</a></div>
+              <div class="panel-body"><a href="">模版</a></div>
+              <div class="panel-body"><a href="">组件交互及生命周期</a></div>
+              <div class="panel-body"><a href="">指令及国际化</a></div>
+              <div class="panel-body"><a href="">服务</a></div>
+              <div class="panel-body"><a href="">依赖注入与路由</a></div>
+            </div>
+          </div>
+          <!--WebAppCore------------------------------------------------------------->
+          <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="heading_WebAppCore">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                   href="#collapse_WebAppCore" aria-expanded="false" aria-controls="collapse_WebAppCore">
+                    WebAppCore<span class="badge">10</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_WebAppCore" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_WebAppCore">
+              <div class="panel-body"><a href="">React.js 开发</a></div>
+              <div class="panel-body"><a href="">React.js 应用</a></div>
+              <div class="panel-body"><a href="">实现ToDoList</a></div>
+              <div class="panel-body"><a href="">ReactNative 开发</a></div>
+              <div class="panel-body"><a href="">组件</a></div>
+              <div class="panel-body"><a href="">复杂组件</a></div>
+              <div class="panel-body"><a href="">WEB APP开发</a></div>
+              <div class="panel-body"><a href="">Ionic 起步</a></div>
+              <div class="panel-body"><a href="">组件-1</a></div>
+              <div class="panel-body"><a href="">组件-2</a></div>
+            </div>
+          </div>
+          <!--Hybrid------------------------------------------------------------->
+          <div class="panel panel-danger">
+            <div class="panel-heading" role="tab" id="heading_Hybrid">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                   href="#collapse_HYBRID" aria-expanded="false" aria-controls="collapse_Hybrid">
+                    Hybrid<span class="badge">2</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_Hybrid" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_Hybrid">
+              <div class="panel-body"><a href="">PhoneGap 概述</a></div>
+              <div class="panel-body"><a href="">PhoneGap 开发</a></div>
+            </div>
+          </div>
+          <!--WeChat------------------------------------------------------------->
+          <div class="panel panel-danger">
+            <div class="panel-heading" role="tab" id="heading_WeChat">
+              <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                   href="#collapse_WeChat" aria-expanded="false" aria-controls="collapse_WeChat">
+                    WeChat<span class="badge">10</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_WeChat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_WeChat">
+              <div class="panel-body"><a href="">微信开发概述</a></div>
+              <div class="panel-body"><a href="">微信开发前期准备</a></div>
+              <div class="panel-body"><a href="">微信开发的种类</a></div>
+              <div class="panel-body"><a href="">公众账号开发</a></div>
+              <div class="panel-body"><a href="">认识小程序</a></div>
+              <div class="panel-body"><a href="">小程序框架</a></div>
+              <div class="panel-body"><a href="">WXML语法</a></div>
+              <div class="panel-body"><a href="">WXML 高级语法</a></div>
+              <div class="panel-body"><a href="">组件</a></div>
+              <div class="panel-body"><a href="">API</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+    <!--页码--------->
+    <nav aria-label="Page navigation ">
+        <ul class="pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+                <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!--返回顶部-->
+    <a title="返回顶部" onclick="window.scrollTo('0','0')" class="pull-right btn btn-default"><b>返回<br>顶部</b></a>
+</div>
+<!--页脚加载-->
+<div class="my-footer">Copyright&copy;web1802</div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+<script src="./data/js/header.js"></script>
+<!--桃心特效加载1个js文件和一个canvas标签-->
+<!--<canvas id="bg_star"style="position: fixed;top:0;z-index: -100"></canvas>-->
+<!--<script src="./data/js/bg_star.js"></script>-->
+<!--粒子背景特效1个标签,2个js文件-->
+<!-- <div id="particles" style="position: fixed;top:0;z-index:-100;width:100%;height:100%;"></div> -->
+<!-- <script type='text/javascript' src='data/js/bg_jquery.particleground.js'></script> -->
+<!-- <script type='text/javascript' src='data/js/bg_demo.js'></script> -->
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="../img/logo/ico-B.ico">
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <title>web1802</title>
+</head>
+<body>
+  <div class="container">
+    <!--页主体开始行-->
+    <div class="row">
+      <!--页主体右侧课程内容-->
+      <div class="col-sm-3 col-sm-push-9">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <!--博主资料卡-->
+          <div class="panel panel-default hidden-xs">
+            <div class="panel-heading">
+              <div class="row">
+                <img src="../img/logo/ico-B.ico" alt="" class="bolgerHead col-xs-3  hidden-sm" >
+                <a href="" class="btn btn-default pull-right  col-xs-12 col-sm-4 col-md-3">关注</a>
+                <b class=" col-xs-6">tangtangtang</b>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="row justifyCenter">
+                <div class="col-sm-6 col-lg-3">原创 <br>11</a></div>
+                <div class="col-sm-6 col-lg-3 ">粉丝 <br>10</a></div>
+                <div class="col-sm-6 col-lg-3 ">喜欢 <br>22</a></div>
+                <div class="col-sm-6 col-lg-3 ">评论 <br>18</a></div>
+              </div>
+            </div>
+          </div>
+          <!--面试题集合----------------------------------------------------------->
+          <div class="panel panel-danger ">
+            <div class="panel-heading " role="tab" id="heading_blogList">
+              <h4 class="panel-title">
+                <a  role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_blogList"
+                    aria-expanded="false" aria-controls="collapse_blogList">
+                  js面试题集合 <span class="badge">4</span>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse_blogList" class="panel-collapse collapse" role="tabpanel"aria-labelledby="heading_blogList">
+              <div class="panel-body"><a href="">js面试题</a></div>
+              <div class="panel-body"><a href="">SQL</a></div>
+              <div class="panel-body"><a href="">DDL</a></div>
+              <div class="panel-body"><a href="">DQL</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--左侧内容主体-------------------------------------------------------------------->
+      <div class="col-sm-9 col-sm-pull-3">
+        <!--路径导航-->
+        <ol class="breadcrumb">
+          <li><a href="../../home.html">Home</a></li>
+          <li><a href="#">好文章</a></li>
+          <li class="active">数组常用方法</li>
+        </ol>
+        <!--内容主体-->
+        <div class="row">
+          <div class="col-xs-12 ">
+          <h1>数组常用方法</h1>
+          <span>2017年06月07日 9:09:05</span>
+          <span class="navbar-right">阅读数: <span>1903</span></span>
+          <hr >
+          <div>
+            <p><b>slice()</b><br> 用于提取目标数组的一部分，返回一个新数组，原数组不变。</p>
+            <p><b>concat()</b><br> 用于多个数组的合并。它将新数组的成员，添加到原数组成员的后部，然后返回一个新数组，原数组不变。</p>
+            <p><b>reverse()</b><br> 用于颠倒排列数组元素，返回改变后的数组。注意，该方法将改变原数组。</p>
+            <p><b>sort()</b><br> 对数组成员进行排序，默认是按照字典顺序排序。排序后，原数组将被改变。</p>
+            <p><b>push()</b><br> 用于在数组的末端添加一个或多个元素，并返回添加新元素后的数组长度。注意，该方法会改变原数组。</p>
+            <p><b>pop()</b><br> 用于删除数组的最后一个元素，并返回该元素。注意，该方法会改变原数组。</p>
+            <p><b>unshift()</b><br> 用于在数组的第一个位置添加元素，并返回添加新元素后的数组长度。注意，该方法会改变原数组。</p>
+            <p><b>shift()</b><br> 用于删除数组的第一个元素，并返回该元素。注意，该方法会改变原数组。</p>
+            <p><b>splice()</b><br> 用于删除原数组的一部分成员，并可以在删除的位置添加新的数组成员，返回值是被删除的元素。注意，该方法会改变原数组。</p>
+            <p><b>map()</b><br> 将数组的所有成员依次传入参数函数，然后把每一次的执行结果组成一个新数组返回。</p>
+            <p><b>forEach()</b><br> 与map方法很相似，也是对数组的所有成员依次执行参数函数。但是，forEach方法不返回值，只用来操作数据。</p>
+            <p><b>filter()</b><br> 用于过滤数组成员，满足条件的成员组成一个新数组返回。</p>
+            <p><b>oin()</b><br> 以指定参数作为分隔符，将所有数组成员连接为一个字符串返回。如果不提供参数，默认用逗号分隔。</p>
+            <p><b>indexOf()</b><br> 返回给定元素在数组中第一次出现的位置，如果没有出现则返回-1。</p>
+            <p><b>lastIndexOf()</b><br> 返回给定元素在数组中最后一次出现的位置，如果没有出现则返回-1。</p>
+          </div>
+          <!--文章尾部-->
+          <div class="text-info">
+            版权声明：本文为博主原创文章，未经博主允许不得转载。https://codet.xyz/data/html/article180607array.html
+
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--js引入部分-->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
