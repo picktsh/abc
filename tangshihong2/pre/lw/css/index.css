@@ -1,0 +1,110 @@
+	#adv{
+		width:200px;height:200px;
+		position:fixed;
+		right:30px;
+		bottom:-200px;
+		background-color:yellow;
+		background-image:url("../img/code.png");
+		background-size:cover;
+		transition: all .5s linear;
+	}
+	#adv>a{float:right;
+		padding:5px 10px;
+		border:1px solid black;
+		cursor:pointer;
+	}
+	/*div{border:1px solid red;}*/
+	.small-text {
+	   font-size:12px;
+	}
+body {
+    margin-top: 50px;
+    /*让出固定定位的导航条高度*/
+}
+.my-main {
+  background: #0062a9;
+  color: #fff;
+}
+.my-main a {
+  color: #fff;
+}
+.my-main a:hover {
+  color: #00aeef;
+}
+.my-logo {
+    display: inline-block;
+    width: 63px;
+    height: 42px;
+    background: url('../img/hdr-spr.png') 0 -512px no-repeat;
+    margin-top: 3px;
+}
+
+.my-big {
+  position: relative;
+}
+.my-caption {
+  padding: 1.5em;
+}
+.my-caption h1 {
+  margin-top: 0;
+}
+@media screen and (min-width: 768px) {
+  .my-caption {
+    position: absolute;
+    bottom: 0px;
+  }
+}
+.my-small-1 {
+  position: relative;
+  overflow: hidden;
+}
+.my-small-1 .my-mask {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.6);
+  top: 75%;
+  padding: 1em;
+  height: 100%;
+  transition: all .2s linear;
+}
+
+.my-small-1 .my-mask:hover {
+  top: 0;
+}
+.my-small-1 .my-mask h4 {
+  margin-top: 0;
+}
+
+@media screen and (min-width: 992px) {
+  .my-small-2 {
+    padding: 1.7em 1.5em;
+  }
+  .my-small-2 .media {
+    line-height: 1.7em;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .my-small-2 {
+    padding: 1.8em 1.5em;
+  }
+  .my-small-2 .media {
+    line-height: 1.8em;
+  }
+}
+.my-main > .container > .row:not(:first-child) {
+  margin-bottom: 20px;
+}
+
+.navbar-default {
+    background-color: #0171c5;
+    border-color: #015ea4;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+
+.img-thumbnail {
+  background-color: #fff;
+  border: 0px solid #fff;
+  padding:0;
+}

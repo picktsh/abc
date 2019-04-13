@@ -1,0 +1,11 @@
+//注册跳转
+$("#register").click(function(e){
+    e.preventDefault();
+    $("#content_re").show();
+    $("#content").hide();
+})
+$("#gologin").click(function(e){
+    e.preventDefault();
+    $("#content_re").hide();
+    $("#content").show();
+})

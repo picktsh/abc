@@ -52,10 +52,16 @@
       <div class="row hidden-xs">
           <ul class="nav nav-justified  nav-tabs navbar-default">
               <li class="active"><a href="" data-toggle="tab"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
-              <li><a href="" data-toggle="tab"><span class="glyphicon glyphicon-send"></span> 学习路</a></li>
+              <li><a href="chatRoom.html" data-toggle="tab"><span class="glyphicon glyphicon-send"></span> 学习路</a></li>
               <li><a href="" data-toggle="tab"><span class="glyphicon glyphicon-list-alt"></span> 好文章</a></li>
               <li><a href="" data-toggle="tab"><span class="glyphicon glyphicon-book"></span>分享</a></li>
-              <li><a href="" data-toggle="tab"><span class="glyphicon glyphicon-bookmark"></span>收藏</a></li>
+              <li class="dropdown">
+                  <a href="javascript:" data-toggle="dropdown"><span class="glyphicon glyphicon-bookmark"></span>收藏</a>
+                  <ul class="dropdown-menu ">
+                      <li><a href="data/htmls/jscs.html">键速测试</a></li>
+                      <li><a href="data/htmls/size.html">视窗尺寸</a></li>
+                  </ul>
+              </li>
               <li><a href="" data-toggle="tab"><span class="glyphicon glyphicon-th-large"></span> 生活</a></li>
               <li><a href="upload/index.php" data-toggle="tab"><span class="glyphicon glyphicon-comment"></span> 聊天室</a></li>
           </ul>
@@ -65,12 +71,12 @@
   <div class="row">
       <!--左侧内容主体-------------------------------------------------------------------->
       <div class="col-sm-9">
-					<!-- 路径导航 -->
-					<ol class="breadcrumb">
-						<li><a href="#">首页</a></li>
-						<li><a href="#">BootStrap</a></li>
-						<li class="active">响应式网页</li>
-					</ol>
+          <!-- 路径导航 -->
+          <ol class="breadcrumb">
+              <li><a href="#">首页</a></li>
+              <li><a href="#">BootStrap</a></li>
+              <li class="active">响应式网页</li>
+          </ol>
           <!--中间部分内容框-->
           <div id="container-fluid" style="color:#555555">
               <h1>BootStrap响应式网页--概览</h1><hr>

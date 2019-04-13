@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome to LW</title>
+
+</head>
+<body>
+  <div class="navbar navbar-default navbar-fixed-top">
+      <!--导航条-->
+      <div class="container">
+          <!--导航条头部-->
+          <div class="navbar-header">
+              <a href="#" class="navbar-brand"><img id="mylogo" style="margin-top: -20px;"src="img/lw1.png"/></a>
+                <a href="Signin.html" class="navbar-brand  " style="color:#fff"><span class="glyphicon glyphicon-user"></span> Sign in</a>
+              <a href="#menu" class="navbar-toggle" data-toggle="collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </a>
+          </div>
+          <!--导航条菜单-->
+          <div class="navbar-collapse collapse" id="menu">
+              <ul class="nav navbar-nav">
+                  <li><a href="#">News</a></li>
+                  <li><a href="#">Sport</a></li>
+                  <li><a href="#">Weather</a></li>
+                  <li><a href="#">Education</a></li>
+                  <li><a href="#">Earth</a></li>
+                  <li class="dropdown">
+                      <a href="#" data-toggle="dropdown">More
+                      <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="#">Travel</a></li>
+                          <li><a href="#">Culture</a></li>
+                          <li><a href="#">Food</a></li>
+                          <li><a href="#">Music</a></li>
+                      </ul>
+                  </li>
+              </ul>
+              <!--右侧导航-->
+
+           <!--右侧表单-->
+           <form class="navbar-right navbar-form">
+                          <div class="form-group has-feedback">
+                              <label for="kw" class="sr-only">搜索关键字</label>
+                              <input id="kw" class="form-control" placeholder="Search">
+                              <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                          </div>
+            </form>
+          </div>
+
+      </div>
+  </div>
+  <div class="my-main">
+      <div class="container">
+          <!--第一行-->
+          <div class="row">
+              <div class="col-sm-4 hidden-xs">
+                  <h4>Welcome to Lw.com</h4>
+              </div>
+              <div class="col-sm-4 col-sm-offset-4 hidden-xs">
+                  <h4 id="date" class="text-right">date</h4>
+              </div>
+          </div>
+          <!--第二行-->
+          <div class="row">
+              <!--左边轮播-->
+              <div class="col-xs-12 col-md-6">
+                 <div id="ad"class="carousel" data-ride="carousel" data-interval="3000">
+                     <div class="carousel-inner">
+                         <div class="item active">
+                             <img class="img-rounded" src="img/banner1.jpg">
+                             <div class="carousel-caption">
+                             <h4>Thailand</h4>
+                             <span>A nice island whoes name forgotten by me</span>
+                             </div>
+                         </div>
+                         <div class="item"><img class="img-rounded" src="img/banner2.jpg">
+                             <div class="carousel-caption">
+                                 <h4>Jumpping</h4>
+                                 <span>A cray jumpping girl</span>
+                             </div>
+                         </div>
+                         <div class="item"><img class="img-rounded" src="img/banner3.jpg">
+                             <div class="carousel-caption">
+                                 <h4>Sunning day</h4>
+                                 <span>A sunny girl</span>
+                             </div>
+                         </div>
+                         <div class="item"><img class="img-rounded"src="img/banner4.jpg">
+                             <div class="carousel-caption">
+                                 <h4>Thailand</h4>
+                                 <span>A nice island whoes name forgotten by me</span>
+                             </div>
+                         </div>
+                     </div>
+                     <!--序号指示器-->
+                     <ul class="carousel-indicators">
+                         <li data-slide-to="0" data-target="#ad" class="active"></li>
+                         <li data-slide-to="1" data-target="#ad"></li>
+                         <li data-slide-to="2" data-target="#ad"></li>
+                         <li data-slide-to="3" data-target="#ad"></li>
+                     </ul>
+                 </div>
+              </div>
+              <!--右边小的图-->
+              <div class="col-xs-12 col-md-6 ">
+                  <div class="row">
+                      <div class="col-sm-6 col-xs-12" >
+                          <img class="img-thumbnail hidden-xs" src="img/1.jpg" alt=""/>
+                          <div class="small-text ">
+                              <b><a href="#">Original swimming pool</a></b>
+                              <span>Jump and swim</span>
+                          </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12 ">
+                          <img class="img-thumbnail hidden-xs"src="img/2.jpg" alt=""/>
+                          <div class="small-text">
+                              <b><a href="#">Ride a horse</a></b>
+                              <span>Ride a horse on the prairie</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-sm-6 col-xs-12 ">
+                          <img class="img-thumbnail  hidden-xs"src="img/3.jpg" alt=""/>
+                          <div class="small-text">
+                              <b><a href="#">Tent</a></b>
+                              <span>Tent and home</span>
+                          </div>
+                      </div>
+                      <div class="col-sm-6 col-xs-12 ">
+                          <img class="img-thumbnail hidden-xs"src="img/4.jpg" alt=""/>
+                          <div class="small-text">
+                              <b><a href="#">Cloud</a></b>
+                              <span>Like spun sugar</span>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="my-footer">
+      <div class="container">
+          <!--正确布局:1行2列,每列再嵌套1行2列 -->
+          <div class="row">
+              <div class="col-xs-12 col-md-6">
+                  <div class="row">
+                      <div class="col-xs-12 col-sm-6">
+                          <h4>About this web</h4>
+                          <ul class="list-unstyled">
+                              <li><a href="#">Sport</a></li>
+                              <li><a href="#">Home</a></li>
+                              <li><a href="#">Capital</a></li>
+                              <li><a href="#">Earth</a></li>
+                              <li><a href="#">Weather</a></li>
+                              <li><a href="#">Autos</a></li>
+                          </ul>
+                      </div>
+                      <div class="col-xs-12 col-sm-6">
+                          <h4>About me</h4>
+                          <ul class="list-unstyled">
+                              <li><a href="#">Sport</a></li>
+                              <li><a href="#">Home</a></li>
+                              <li><a href="#">News</a></li>
+                              <li><a href="#">Capital</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                  <div class="row">
+                      <div class="col-xs-12 col-sm-6">
+                          <h4>About x</h4>
+                          <ul class="list-unstyled">
+                              <li><a href="#">Sport</a></li>
+                              <li><a href="#">Home</a></li>
+                              <li><a href="#">News</a></li>
+                              <li><a href="#">Capital</a></li>
+                          </ul>
+                      </div>
+                      <div class="col-xs-12 col-sm-6">
+                          <h4>About y</h4>
+                          <ul class="list-unstyled">
+                              <li><a href="#">Sport</a></li>
+                              <li><a href="#">Home</a></li>
+                              <li><a href="#">News</a></li>
+                              <li><a href="#">Capital</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div id="adv">
+      <a class="glyphicon glyphicon-remove"></a>
+  </div>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css"/>
+	<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
