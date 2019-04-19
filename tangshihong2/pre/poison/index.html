@@ -1,0 +1,48 @@
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>柠檬方块</title>
+    <style>
+        body{ position: absolute; width: 100%; height: 100%; margin: 0; padding: 0; background: rgba(255, 143, 158, 0.5) url("img/body_bg.png"); animation: bodyBg 2s linear infinite;}
+        .dot{ position: absolute; top: 50%; left: 50%; width: 0; height: 0; perspective: 1000px; transform-style: preserve-3d; outline: 1px dashed red;}
+        .dot .box{ position: absolute; top: 50%; left: 50%; width: 200px; height: 200px; transform-style: preserve-3d; transform: translateX(-50%) translateY(-50%); animation: boxRotate 10s infinite linear ;}
+        .dot .box .aside{ position: absolute; top: 0; left: 0; width: 200px; height: 200px; background: rgba(0,0,0,.3) no-repeat center / contain; font-size: 0; text-align: center; }
+        .dot .box .aside:nth-child(1){ transform: translateZ(100px);}
+        .dot .box .aside:nth-child(2){ transform: translateZ(-100px);}
+        .dot .box .aside:nth-child(3){ left: -100px;transform: rotateY(-90deg);}
+        .dot .box .aside:nth-child(4){ left: 100px;transform: rotateY(90deg);}
+        .dot .box .aside:nth-child(5){ top: -100px; transform: rotateX(90deg);}
+        .dot .box .aside:nth-child(6){ top: 100px; transform: rotateX(-90deg);}
+        @keyframes boxRotate {
+            0%{ transform: translateX(-50%) translateY(-50%) rotateX(0) rotateY(0); }
+            50%{ transform: translateX(-50%) translateY(-50%) rotateX(-40deg) rotateY(180deg); }
+            100%{ transform: translateX(-50%) translateY(-50%) rotateX(0) rotateY(360deg);}
+        }
+        @keyframes bodyBg {
+            0%{ background-position: 0 0;}
+            50%{ background-position: 5px -20px;}
+            100%{ background-position: 0 -40px;}
+        }
+        .dot .box .aside:nth-child(1){ background-image: url("img/img1.jpg"); }
+        .dot .box .aside:nth-child(2){ background-image: url("img/img1.jpg"); }
+        .dot .box .aside:nth-child(3){ background-image: url("img/img3.jpg"); }
+        .dot .box .aside:nth-child(4){ background-image: url("img/img3.jpg"); }
+        .dot .box .aside:nth-child(5){ background-image: url("img/img2.jpg"); }
+        .dot .box .aside:nth-child(6){ background-image: url("img/img2.jpg"); }
+    </style>
+</head>
+<body>
+<div class="dot">
+    <div class="box">
+        <div class="aside">1</div>
+        <div class="aside">2</div>
+        <div class="aside">3</div>
+        <div class="aside">4</div>
+        <div class="aside">5</div>
+        <div class="aside">6</div>
+    </div>
+</div>
+</body>
+</html>
