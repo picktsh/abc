@@ -18,3 +18,10 @@
 #copyright{margin-top:10px;text-align:center;width:100%;color:#666}
 #errorMsg{width:100%;text-align:center;font-size:24px;position:absolute;top:100px;left:0}
 #copyright a{color:#666}
+#full-bg{ position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background: url(../img/img1.jpg) no-repeat center top / cover; transition: all 2s; opacity: .3; pointer-events: none; }
+#full-bg.img1{ background-image: url("../img/img1.jpg");}
+#full-bg.img2{ background-image: url("../img/img2.jpg");}
+#full-bg.img3{ background-image: url("../img/img3.jpg");}
+#full-bg.img4{ background-image: url("../img/img4.jpg");}
+#full-bg.img5{ background-image: url("../img/img5.jpg");}
+#full-bg.img6{ background-image: url("../img/img6.jpg");}

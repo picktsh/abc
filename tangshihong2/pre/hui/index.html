@@ -59,6 +59,7 @@
     <div id="copyright">
         <a href="http://106.12.133.206/">Copyright All Rights Reserved</a><br>
     </div>
+    <div id="full-bg"></div>
 </div>
 
 <script type="text/javascript" src="js/garden.js"></script>
@@ -95,6 +96,12 @@
         adjustCodePosition();
         $("#code").typewriter();
     }
+
+    var imgList = ["img1", "img2", "img3", "img4", "img5", "img6" ];
+    setInterval(function () {
+         var imgClass = imgList[Math.floor(Math.random()*imgList.length)];
+        $("#full-bg").removeClass().addClass(imgClass);
+    },3000);
 </script>
 
 </body>
