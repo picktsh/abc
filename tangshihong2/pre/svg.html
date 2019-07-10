@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="cn-ZH">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+<div style=" padding: 0 0 10px; text-align: center;">随便画点什么吧</div>
+<svg id="svg" style=" display: block; margin: 0 auto; border:1px solid red;">
+</svg>
+<script>
+	var svg;
+	window.onload = function () {
+		svg = document.getElementById("svg");
+		svg.addEventListener("mousedown", mousedownSvg);
+		svg.setAttribute("width", innerWidth - 30);
+		svg.setAttribute("height", innerHeight - 62);
+		
+		//创建一个静态的方块
+		// var rect = createSvgElement("rect", {x: 100, y: 100, width: 100, height: 100, stroke: "blue"});
+		// 插入到页面中
+		// svg.appendChild(rect);
+		
+		
+	};
+	
+	//鼠标按下创建一个线条
+	function mousedownSvg(e) {
+		var x = e.clientX;
+		var y = e.clientY;
+		var bounding = this.getBoundingClientRect();
+		x = x - bounding.left;
+		y = y - bounding.top;
+		var line = createSvgElement("line", {x1: x, y1: y, x2: x, y2: y, stroke: "red"});
+		this.appendChild(line);
+		//鼠标滑动的时候要做的事情
+		var drag = function (e) {
+			line.setAttribute("x2", e.clientX - bounding.left);
+			line.setAttribute("y2", e.clientY - bounding.top);
+		};
+		//鼠标放开的时候要做的事情
+		var drop = function (e) {
+			document.removeEventListener("mousemove", drag);
+			document.removeEventListener("mouseup", drop);
+			
+		};
+		document.addEventListener("mousemove", drag);
+		document.addEventListener("mouseup", drop);
+	}
+	
+	//鼠标按下,创建一个方块
+	// function mousedownSvg(e) {
+	// 	var x = e.clientX;
+	// 	var y = e.clientY;
+	// 	var bounding = this.getBoundingClientRect();
+	// 	x = x - bounding.left;
+	// 	y = y - bounding.top;
+	// 	//加入一个方形
+	// 	var rect = createSvgElement("rect", {x: x, y: y, width: 50, height: 50, fill: "black"});
+	// 	this.appendChild(rect);
+	// }
+	
+	//快速添加属性
+	function createSvgElement(tagName, attrs) {
+		var element = document.createElementNS("http://www.w3.org/2000/svg", tagName);
+		for (var name in attrs) {
+			element.setAttribute(name, attrs[name]);
+		}
+		return element;
+	}
+</script>
+</body>
+</html>
