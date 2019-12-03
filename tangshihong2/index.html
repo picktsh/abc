@@ -22,9 +22,11 @@
 			left: 50%;
 			top: 50%;
 			transform: translateX(-50%) translateY(-50%);
-			z-index: 1;
+			z-index: 10;
 		}
 		.navsss > a{
+			display: block;
+			padding: 5px 0;
 			text-decoration: none;
 			color: blue;
 		}
@@ -35,18 +37,53 @@
 		.footer-bar ul{ padding: 0; margin: 0;}
 		.footer-bar ul li{ display: inline-block; margin: 0 5px;}
 		.footer-bar ul li a{ color: #AAAAAA; font-size: 18px; }
+		
+		svg.mao{ height: 79px;}
+		svg.mao.animate{}
+		svg.mao.txt{ stroke: #69798B;}
+		svg.mao text{
+			stroke-width: 1px;
+			/*stroke-dasharray: 30, 310;*/
+			fill: none;
+			/*text-transform: uppercase; !*转成大写*!*/
+			font-size: 60px;
+			dominant-baseline: text-before-edge; /*基线对齐方式*/
+			text-anchor: middle; /*文本元素对齐方式*/
+			text-align: center;
+			font-family: 'Overlock', cursive;
+		}
+		svg.mao text.text1{stroke: #3498DB;text-shadow: 0 0 2px #3498DB;}
+		svg.mao text.text2{stroke: #F39C12;text-shadow: 0 0 2px #F39C12;}
+		svg.mao text.text3{stroke: #E74C3C;text-shadow: 0 0 2px #E74C3C;}
+		svg.mao text.text4{stroke: #9B59B6;text-shadow: 0 0 2px #9B59B6;}
 	</style>
 </head>
 <body class="my-bg">
 <!--导航条-->
 <div class="navsss">
-	<a href="http://zentao.yigeqd.com/" target="view_zentao">禅道-项目管理</a><br>
-	<a href="http://lovewall.yigeqd.com/" target="view_lovewall">LoveWall</a><br>
-	<a href="http://wordpress.yigeqd.com/" target="view_wordpress">Wordpress博客</a><br>
-	<a href="http://tsh.sxl.cn" target="view_sxl">上线了</a><br>
-	<a href="https://blog.csdn.net/qq_42374362" target="view_csdn">CSDN博客</a><br>
-	<a href="pre/tsh" target="view_tsh">个人简历</a><br>
-	<a href="home.html" target="view_home">新版博客</a><br>
+	<div>
+		<svg class="mao animate" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 79">
+			<text class="text1" x="50%" y="0" stroke-dasharray="90 310">一个前端
+				<animate attributeName="stroke-dashoffset" begin="-2s" dur="8s" from="0" to="-400" repeatCount="indefinite"></animate>
+			</text>
+			<text class="text2" x="50%" y="0" stroke-dasharray="90 310">一个前端
+				<animate attributeName="stroke-dashoffset" begin="-4s" dur="8s" from="0" to="-400" repeatCount="indefinite"></animate>
+			</text>
+			<text class="text3" x="50%" y="0" stroke-dasharray="90 310">一个前端
+				<animate attributeName="stroke-dashoffset" begin="-6s" dur="8s" from="0" to="-400" repeatCount="indefinite"></animate>
+			</text>
+			<text class="text4" x="50%" y="0" stroke-dasharray="90 310">一个前端
+				<animate attributeName="stroke-dashoffset" begin="-8s" dur="8s" from="0" to="-400" repeatCount="indefinite"></animate>
+			</text>
+		</svg>
+	</div>
+	<a href="http://zentao.yigeqd.com/" target="view_zentao">禅道-项目管理</a>
+	<a href="http://lovewall.yigeqd.com/" target="view_lovewall">LoveWall</a>
+	<a href="http://wordpress.yigeqd.com/" target="view_wordpress">Wordpress博客</a>
+	<a href="http://tsh.sxl.cn" target="view_sxl">上线了</a>
+	<a href="https://blog.csdn.net/qq_42374362" target="view_csdn">CSDN博客</a>
+	<a href="pre/tsh" target="view_tsh">个人介绍</a>
+	<a href="home.html" target="view_home">新版博客</a>
 </div>
 <div class="footer-bar">
 	<ul>
@@ -67,8 +104,17 @@
 		<li><a href="pre/zzj" target="view_zzj">周志君</a></li>
 	</ul>
 </div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/three.js/92/three.min.js"></script>
 <script src="data/js/TweenMax.min.js"></script>
+<script>
+	// a 标签再手机中不跳转的问题
+	function aClick(tag) {
+		var url = $(tag).attr('href');
+		var target = $(tag).attr('target');
+		window.open(url, target)
+	}
+</script>
 <script>
 	var isMouseDown = false;
 	var emptySlot = "emptySlot", planeTop = "planeTop", planeBottom = "planeBottom";
