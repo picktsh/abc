@@ -1,0 +1,30 @@
+editpuls
+chrome
+webstorm
+vscode
+EgretWing
+sublime
+xmapp
+RegexBuddy
+雷电模拟器
+mumu模拟器
+蓝叠
+mindmanager
+phoneGap
+eclipse
+微信开发工具
+ps
+Shadowsocks
+FileZilla
+TeamViewer
+upupoo
+拾色器
+Xshell 6
+git
+node8.11
+cnpm
+angular
+ionic
+react
+react navigate
+hexo
