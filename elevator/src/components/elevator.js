@@ -45,4 +45,9 @@ AElevator>buttons>but_*:
 * 楼层类
 * 楼层类>按钮类
 * 楼层类>按钮实例状态
+*
+* ID 的组成:
+* 电梯ID = 大楼ID
+* 按钮ID = 大楼ID>电梯ID>
+* 楼层门ID = 大楼ID>楼层ID>电梯ID
 * */
