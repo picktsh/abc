@@ -1,3 +1,62 @@
+/**
+ * 开关门速度
+ * 上下运行的速度
+ * 保持开门的时间
+ * */
+// 模拟数据结构
+let mansin = {
+  id: 0,
+  name: '**大厦',//大厦名字
+  height: 20,//楼层高度
+  elevatorNumber: 4,//电梯数量
+  // 楼层数量是 height 的数量
+  floor: {
+    F_0: {
+      // 一个楼层实例
+      id: 0,
+      name: 'F_0',
+      door: {
+        // 数量是 elevatorNumber 的数量
+        D_0: {},
+        D_1: {},
+      }
+    },
+    F_1: {},
+  },
+  // 电梯数量是 elevatorNumber 的数量
+  elevator: {
+    E_0: {
+      // 一个电梯实例
+      id: 0,
+      name: 'E_0',
+      status: 0, //参考状态码
+      elevation: 0,//所在楼层的位置
+      button: {
+        // 电梯内的按钮
+        B_help: {
+          // 一个按钮实例
+          id: 0,
+          name: 'B_help',
+          status: 0, //按钮状态0,1
+          target: 0, // 目标楼层
+        },//帮助
+        B_hold: {},//保持开门
+        B_open: {},//开门
+        B_close: {},//关门
+        //楼层按钮,数量是楼层高度
+        B_1: {
+          id: 1,
+          name: 'B_help',
+          status: 0, //按钮状态0,1
+          target: 1, // 目标楼层
+        },
+        B_2: {},
+      },
+    },
+    E_1: {},
+  },
+}
+// 一个建筑类
 const Mansion = {
   FloorQuantity: 30, // 楼层高度
   ElevatorNumber: 4, // 电梯数量
