@@ -10,7 +10,7 @@
 let mansin = {
   id: 0,
   name: '**大厦',//大厦名字
-  height: 20,//楼层高度
+  storeyHeight: 20,//楼层高度
   elevatorNumber: 4,//电梯数量
   // 楼层数量是 height 的数量
   floor: {
