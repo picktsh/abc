@@ -12,6 +12,7 @@ let mansin = {
   name: '**大厦',//大厦名字
   storeyHeight: 20,//楼层高度
   elevatorNumber: 4,//电梯数量
+  doorSpeed: 3000,//关门速度<Number>(ms)
   // 楼层数量是 height 的数量
   floor: {
     F_0: {
