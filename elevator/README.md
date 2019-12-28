@@ -37,3 +37,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 > ### 需求条
 所有状态都在 控制中心体现
+
+写点东西,证明今天来过
