@@ -39,3 +39,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 所有状态都在 控制中心体现
 
 写点东西,证明今天来过
+
+elevator的path是遍历floor的按钮是否点亮来生成的
