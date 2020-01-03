@@ -98,7 +98,7 @@ const Mansion = {
   }
 }
 export default Mansion
-/*
+/**
 状态码说明:
 AElevator>status:
 0:关门等待
@@ -111,7 +111,7 @@ AElevator>buttons>but_*:
 0: 默认
 1: 按下
 */
-/*
+/**
 * 类的创建:
 * 楼层类
 * 楼层类>按钮类
@@ -121,4 +121,4 @@ AElevator>buttons>but_*:
 * 电梯ID = 大楼ID
 * 按钮ID = 大楼ID>电梯ID>
 * 楼层门ID = 大楼ID>楼层ID>电梯ID
-* */
+*/
