@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /pre/*
+Disallow: /data/*
