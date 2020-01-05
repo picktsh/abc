@@ -14,13 +14,23 @@
  * 保证宽高比例都是1:1,
  * 任何一边大于600px都以最小的一边的90%的尺寸显示
  */
-// 模拟数据结构
-let mansin = {
-  id: 0,
-  name: '**大厦',//大厦名字
+const M = {
+  M_: 'M_',//建筑
+  F_: 'F_',//楼层
+  D_: 'D_',//楼层门
+  E_: 'E_',//电梯
+  B_: 'B_',//按钮
   storeyHeight: 20,//楼层高度
   elevatorNumber: 4,//电梯数量
   doorSpeed: 3000,//关门速度<Number>(ms)
+}
+// 模拟数据结构
+let mansin = {
+  id: 0,
+  name: 'M_0',//大厦的序列
+  storeyHeight: M.storeyHeight,
+  elevatorNumber: M.elevatorNumber,
+  doorSpeed: M.doorSpeed,
   // 楼层数量是 height 的数量
   floor: {
     F_0: {
@@ -99,26 +109,26 @@ const Mansion = {
 }
 export default Mansion
 /**
-状态码说明:
-AElevator>status:
-0:关门等待
-1:开门中
-2:开门等待
-3:关门中
-4:上行中
-5:下行中
-AElevator>buttons>but_*:
-0: 默认
-1: 按下
-*/
+ 状态码说明:
+ AElevator>status:
+ 0:关门等待
+ 1:开门中
+ 2:开门等待
+ 3:关门中
+ 4:上行中
+ 5:下行中
+ AElevator>buttons>but_*:
+ 0: 默认
+ 1: 按下
+ */
 /**
-* 类的创建:
-* 楼层类
-* 楼层类>按钮类
-* 楼层类>按钮实例状态
-*
-* ID 的组成:
-* 电梯ID = 大楼ID
-* 按钮ID = 大楼ID>电梯ID>
-* 楼层门ID = 大楼ID>楼层ID>电梯ID
-*/
+ * 类的创建:
+ * 楼层类
+ * 楼层类>按钮类
+ * 楼层类>按钮实例状态
+ *
+ * ID 的组成:
+ * 电梯ID = 大楼ID
+ * 按钮ID = 大楼ID>电梯ID>
+ * 楼层门ID = 大楼ID>楼层ID>电梯ID
+ */
