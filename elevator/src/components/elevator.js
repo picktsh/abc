@@ -78,35 +78,18 @@ let mansin = {
     E_1: {},
   },
 }
+
 // 一个建筑类
-const Mansion = {
-  FloorQuantity: 30, // 楼层高度
-  ElevatorNumber: 4, // 电梯数量
-  AElevator: {
-    // 每一个电梯对应的属性和方法
-    buttons: {
-      // 每一个电梯的按钮
-      btn_up: {
-        status: 0
-      },
-      btn_down: {},
-      btn_floors: [{}],
-      btn_help: {}
-    },
-    site: {},
-    status: 0
-  },
-  AFloor: {
-    // 每一个楼层对应的属性和方法
-    buttons: {
-      // 每一个电梯的按钮
-      btn_up: {
-        status: 0
-      },
-      btn_down: {},
-    },
+class Mansion {
+  constructor (props) {
+    this.storeyHeight = M.storeyHeight
+    this.elevatorNumber = M.elevatorNumber
+    this.doorSpeed = M.doorSpeed
+    this.elevator = {}
+    this.floor = {}
   }
 }
+
 export default Mansion
 /**
  状态码说明:
