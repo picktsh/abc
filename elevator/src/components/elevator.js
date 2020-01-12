@@ -88,6 +88,12 @@ class Mansion {
     this.elevator = {}
     this.floor = {}
   }
+  // 实例初始化方法
+  initElevator (Elevator) {
+    for (let i = 0; i < this.storeyHeight; i++) {
+      this.elevator[M.E_+i] = new Elevator()
+    }
+  }
 }
 
 export default Mansion
