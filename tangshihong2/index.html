@@ -7,7 +7,7 @@
 	<title>导航页</title>
 	<link rel="SHORTCUT ICON" href="/data/img/logo/ico-B.ico">
 	<style>
-		/*body{touch-action: none;}*/
+		body{ touch-action: none; }
 		.my-bg{
 			margin: 0;
 			padding: 0;
@@ -64,7 +64,7 @@
 			.navsss{ font-size: 16px; }
 			.footer-bar{ bottom: 10px; }
 			.footer-bar br{ display: none; }
-			.footer-bar ul li a{ color: #AAAAAA; font-size: 12px; }
+			.footer-bar ul li a{ font-size: 12px; color: #AAAAAA; }
 		}
 	</style>
 </head>
@@ -123,12 +123,14 @@
 <script src="./data/lib/TweenMax.min.js"></script>
 <script>
   // a 标签再手机中不跳转的问题-暂时没能解决
-  // function aClick (tag) {
-  //   var url = $(tag).attr('href')
-  //   var target = $(tag).attr('target')
-  //   window.open(url, target)
-  // }
-  window.addEventListener('touchmove', e => e.preventDefault())
+  var href = document.getElementsByTagName('a')
+  
+  for (var i = 0; i < href.length; i++) {
+    href[i].ontouchend = function () {
+      window.location.href = this.getAttribute('href')
+    }
+  }
+
 </script>
 <script>
   var isMouseDown = false
