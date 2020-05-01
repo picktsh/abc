@@ -1,10 +1,13 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>导航页</title>
 	<link rel="SHORTCUT ICON" href="/data/img/logo/ico-B.ico">
 	<style>
+		/*body{touch-action: none;}*/
 		.my-bg{
 			margin: 0;
 			padding: 0;
@@ -56,6 +59,13 @@
 		svg.mao text.text2{stroke: #F39C12;text-shadow: 0 0 2px #F39C12;}
 		svg.mao text.text3{stroke: #E74C3C;text-shadow: 0 0 2px #E74C3C;}
 		svg.mao text.text4{stroke: #9B59B6;text-shadow: 0 0 2px #9B59B6;}
+		
+		@media screen and (max-width: 768px){
+			.navsss{ font-size: 16px; }
+			.footer-bar{ bottom: 10px; }
+			.footer-bar br{ display: none; }
+			.footer-bar ul li a{ color: #AAAAAA; font-size: 12px; }
+		}
 	</style>
 </head>
 <body class="my-bg">
@@ -87,7 +97,7 @@
 	<a href="http://tsh.sxl.cn" target="view_sxl">上线了</a>
 	<a href="https://blog.csdn.net/qq_42374362" target="view_csdn">CSDN博客</a>
 	<a href="pre/tsh" target="view_tsh">个人介绍</a>
-	<a href="home.html" target="view_home">新版博客</a>
+	<a href="home.html" target="view_home" onclick="aClick(this)">新版博客</a>
 </div>
 <div class="footer-bar">
 	<ul>
@@ -113,11 +123,12 @@
 <script src="./data/lib/TweenMax.min.js"></script>
 <script>
   // a 标签再手机中不跳转的问题-暂时没能解决
-  function aClick (tag) {
-    var url = $(tag).attr('href')
-    var target = $(tag).attr('target')
-    window.open(url, target)
-  }
+  // function aClick (tag) {
+  //   var url = $(tag).attr('href')
+  //   var target = $(tag).attr('target')
+  //   window.open(url, target)
+  // }
+  window.addEventListener('touchmove', e => e.preventDefault())
 </script>
 <script>
   var isMouseDown = false
