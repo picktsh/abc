@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+
+<ul>
+	<li><h2>看控制台</h2></li>
+</ul>
+<script>
+  function exponential (base, day) {
+    console.log(`第${1}天:  ${base}元`)
+    let gather = 0
+    for (let i = 1; i < day; i++) {
+      gather += base = base * 2
+      console.log(`第${i + 1}天:  ${base}元`)
+    }
+    console.log(`${day}天累计:  ${gather}`)
+  }
+  
+  exponential(0.05, 30)
+</script>
+</body>
+</html>
