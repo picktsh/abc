@@ -1,0 +1,174 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"/><link rel="shortcut icon" href="favicon.ico"><title>FC 游戏在线玩</title><meta name="description" content="小霸王游戏在线玩"/><meta name="keywords" content="FC游戏,小霸王,rom,在线玩,在线NES模拟器,nes模拟器,nes"/>
+	<link href="static/css/main.9fa8962d.chunk.css" rel="stylesheet">
+	<script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?ea4269d8a00e95fdb9ee61e3041a8f98";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+	</script>
+	<!--[if lte IE 8]>
+	<script>
+		alert("您的浏览器太旧了，请升级浏览器再访问");
+		window.location.href="http://lab.mkblog.cn/music/plugns/killie/"
+	</script>
+	<![endif]-->
+</head>
+<body>
+<div id="root"></div>
+<script>
+  (function(modules) {
+    function webpackJsonpCallback(data) {
+      var chunkIds = data[0];
+      var moreModules = data[1];
+      var executeModules = data[2];
+      
+      // add "moreModules" to the modules object,
+      // then flag all "chunkIds" as loaded and fire callback
+      var moduleId, chunkId, i = 0, resolves = [];
+      for(;i < chunkIds.length; i++) {
+        chunkId = chunkIds[i];
+        if(installedChunks[chunkId]) {
+          resolves.push(installedChunks[chunkId][0]);
+        }
+        installedChunks[chunkId] = 0;
+      }
+      for(moduleId in moreModules) {
+        if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+          modules[moduleId] = moreModules[moduleId];
+        }
+      }
+      if(parentJsonpFunction) parentJsonpFunction(data);
+      
+      while(resolves.length) {
+        resolves.shift()();
+      }
+      
+      // add entry modules from loaded chunk to deferred list
+      deferredModules.push.apply(deferredModules, executeModules || []);
+      
+      // run deferred modules when all chunks ready
+      return checkDeferredModules();
+    };
+    function checkDeferredModules() {
+      var result;
+      for(var i = 0; i < deferredModules.length; i++) {
+        var deferredModule = deferredModules[i];
+        var fulfilled = true;
+        for(var j = 1; j < deferredModule.length; j++) {
+          var depId = deferredModule[j];
+          if(installedChunks[depId] !== 0) fulfilled = false;
+        }
+        if(fulfilled) {
+          deferredModules.splice(i--, 1);
+          result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
+        }
+      }
+      return result;
+    }
+
+// The module cache
+    var installedModules = {};
+
+// object to store loaded and loading chunks
+// undefined = chunk not loaded, null = chunk preloaded/prefetched
+// Promise = chunk loading, 0 = chunk loaded
+    var installedChunks = {
+      2: 0
+    };
+    
+    var deferredModules = [];
+
+// The require function
+    function __webpack_require__(moduleId) {
+      
+      // Check if module is in cache
+      if(installedModules[moduleId]) {
+        return installedModules[moduleId].exports;
+      }
+      // Create a new module (and put it into the cache)
+      var module = installedModules[moduleId] = {
+        i: moduleId,
+        l: false,
+        exports: {}
+      };
+      
+      // Execute the module function
+      modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+      
+      // Flag the module as loaded
+      module.l = true;
+      
+      // Return the exports of the module
+      return module.exports;
+    }
+
+
+// expose the modules object (__webpack_modules__)
+    __webpack_require__.m = modules;
+
+// expose the module cache
+    __webpack_require__.c = installedModules;
+
+// define getter function for harmony exports
+    __webpack_require__.d = function(exports, name, getter) {
+      if(!__webpack_require__.o(exports, name)) {
+        Object.defineProperty(exports, name, { enumerable: true, get: getter });
+      }
+    };
+
+// define __esModule on exports
+    __webpack_require__.r = function(exports) {
+      if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+        Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+      }
+      Object.defineProperty(exports, '__esModule', { value: true });
+    };
+
+// create a fake namespace object
+// mode & 1: value is a module id, require it
+// mode & 2: merge all properties of value into the ns
+// mode & 4: return value when already ns object
+// mode & 8|1: behave like require
+    __webpack_require__.t = function(value, mode) {
+      if(mode & 1) value = __webpack_require__(value);
+      if(mode & 8) return value;
+      if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+      var ns = Object.create(null);
+      __webpack_require__.r(ns);
+      Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+      if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+      return ns;
+    };
+    
+    // getDefaultExport function for compatibility with non-harmony modules
+    __webpack_require__.n = function(module) {
+      var getter = module && module.__esModule ?
+        function getDefault() { return module['default']; } :
+        function getModuleExports() { return module; };
+      __webpack_require__.d(getter, 'a', getter);
+      return getter;
+    };
+    
+    // Object.prototype.hasOwnProperty.call
+    __webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+    
+    // __webpack_public_path__
+    __webpack_require__.p = "/";
+    
+    var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+    var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+    jsonpArray.push = webpackJsonpCallback;
+    jsonpArray = jsonpArray.slice();
+    for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+    var parentJsonpFunction = oldJsonpFunction;
+    
+    checkDeferredModules();
+  })
+  ([]);
+</script>
+<script src="static/js/1.4e6edd7a.chunk.js"></script>
+<script src="static/js/main.7975cf5d.chunk.js?v=21"></script>
+</body></html>
