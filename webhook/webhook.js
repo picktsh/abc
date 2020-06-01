@@ -4,9 +4,9 @@ const handler = createHandler({
   path: '',
   secret: 'myhashsecret'
 })
-const {spawn} = require('child_process')
 
 function run_cmd (cmd, args, callback) {
+  const {spawn} = require('child_process')
   const child = spawn(cmd, args)
   let resp = ''
   child.stdout.on('data', function (buffer) {
@@ -20,11 +20,14 @@ function run_cmd (cmd, args, callback) {
 http.createServer((req, res) => {
   handler(req, res, err => {
     res.statusCode = 404
-    res.end('no such location')
+    res.end('no such location...')
   })
 }).listen(9876, () => {
   console.log('Webhook listen at 9876')
 })
 handler.on('error', event => {
-  console.log('Receive *', event.payload)
+  console.log('Receive *')
+  run_cmd('sh', ['./deploy-dev.sh'], function (text) {
+    console.log(text)
+  })
 })
