@@ -1,7 +1,7 @@
 const http = require('http')
 const createHandler = require('github-webhook-handler')
 const handler = createHandler({
-  path: '',
+  path: '/',
   secret: 'myhashsecret'
 })
 
@@ -25,7 +25,10 @@ http.createServer((req, res) => {
 }).listen(9876, () => {
   console.log('Webhook listen at 9876')
 })
-handler.on('error', event => {
+handler.on('error', (err) => {
+  console.log('_*_Error_*_', err.message)
+})
+handler.on('*', event => {
   console.log('Receive *')
   run_cmd('sh', ['./deploy-dev.sh'], function (text) {
     console.log(text)
