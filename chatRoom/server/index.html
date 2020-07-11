@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>rise崛起 的聊天室</title>
+	<link href="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+	<style>
+		.msg-wrapper{position: fixed; top: 0; left: 0; right: 0;bottom: 0; width: 100%; height: 100%; padding: 50px 0 62px;}
+		/*表头*/
+		.msg-header{ position: absolute; top: 0; left: 0; right: 0;}
+		.msg-header .alert{ margin-bottom: 0;}
+		.msg-header .alert .header-menu{ float: right; color: red; }
+		.msg-header .alert .header-menu svg{ width: 21px; height: 21px; fill: currentColor; }
+		/*列表*/
+		.msg-body{ height: 100%; overflow-y: auto; }
+		.msg-body .list-group{ }
+		.msg-body .list-group li{ border: none; min-height: 82px; }
+		.msg-body .list-group li.list-bottom{ min-height: unset; height: 0;}
+		.msg-body .msg-item{ position: relative; width: 100%; }
+		.msg-body .msg-item.other{ padding-left: 60px;}
+		.msg-body .msg-item.me{ float: right; padding-right: 60px; }
+		.msg-body .msg-item .avatar{ width: 50px; height: 50px; line-height: 50px; border-radius: 25px; border: 1px solid #EEEEEE; background: rgba(0, 0, 0, .05); font-size: 20px; text-align: center; color: #fff; text-transform: uppercase; }
+		.msg-body .msg-item.other .avatar{ position: absolute; left: 0; }
+		.msg-body .msg-item.me .avatar{ position: absolute; right: 0; }
+		.msg-body .msg-item .username{ font-size: 14px; color: #AAAAAA;}
+		.msg-body .msg-item.me .username{ text-align: right; }
+		.msg-body .msg-item .content{ display: inline-block; min-height: 34px; padding: 5px 10px; border-radius: 5px; background: #EEEEEE; font-size: 16px;}
+		.msg-body .msg-item.other .content{}
+		.msg-body .msg-item.me .content{ float: right; }
+		.msg-body .msg-time{font-size: 12px; text-align: center; color: #AAAAAA;}
+		/*页脚输入框*/
+		.msg-footer{ position: absolute; bottom: 0; }
+		.msg-footer .input-group-append{position: relative; }
+		.msg-footer .input-group-append .popover{ top: 10px; left: auto; right: 100%;}
+		.msg-footer .input-group-append .popover .popover-body{ white-space: nowrap; }
+	</style>
+</head>
+<body>
+<div id="app">
+	<div class="container">
+		<div class="msg-wrapper">
+			<div class="msg-header">
+				<div class="alert alert-primary" role="alert">
+					{{title}}
+					<div class="header-menu" :style="`color: ${menu?'red':'blue'}`" @click="menu=!menu">
+						<svg t="1593349781199" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1774" width="200" height="200">
+							<path d="M358.226502 0H111.088915C49.839513 0 0 49.829513 0 111.088915v247.117587C0 419.455904 49.829513 469.295417 111.088915 469.295417h247.137587c61.249402 0 111.088915-49.829513 111.088915-111.088915V111.068915C469.325417 49.829513 419.495903 0 358.226502 0z m37.029638 358.196502c0 20.409801-16.619838 37.029638-37.029638 37.029638H111.088915c-20.409801 0-37.029638-16.619838-37.029638-37.029638V111.068915c0-20.409801 16.619838-37.029638 37.029638-37.029638h247.137587c20.409801 0 37.029638 16.619838 37.029638 37.029638V358.196502z m-37.029638 196.498081H111.088915C49.839513 554.694583 0 604.524096 0 665.783498v247.127587C0 974.150487 49.829513 1023.99 111.088915 1023.99h247.137587c61.249402 0 111.088915-49.829513 111.088915-111.088915V665.783498c0.01-61.239402-49.819513-111.088915-111.088915-111.088915z m37.029638 358.206502c0 20.419801-16.619838 37.029638-37.029638 37.029638H111.088915c-20.409801 0-37.029638-16.609838-37.029638-37.029638V665.783498c0-20.409801 16.619838-37.019638 37.029638-37.019638h247.137587c20.409801 0 37.029638 16.609838 37.029638 37.019638v247.117587zM912.901085 0H665.763498c-61.249402 0-111.088915 49.829513-111.088915 111.088915v247.117587c0 61.249402 49.829513 111.088915 111.088915 111.088915h247.137587c61.249402 0 111.088915-49.829513 111.088915-111.088915V111.068915C1023.99 49.829513 974.160487 0 912.901085 0z m37.029638 358.196502c0 20.409801-16.619838 37.029638-37.029638 37.029638H665.763498c-20.409801 0-37.019638-16.619838-37.019638-37.029638V111.068915c0-20.409801 16.609838-37.029638 37.019638-37.029638h247.137587c20.409801 0 37.029638 16.619838 37.029638 37.029638V358.196502z m-37.029638 196.498081H665.763498c-61.249402 0-111.088915 49.829513-111.088915 111.088915v247.127587c0 61.249402 49.829513 111.088915 111.088915 111.088915h247.137587c61.249402 0 111.088915-49.829513 111.088915-111.088915V665.783498c0-61.239402-49.829513-111.088915-111.088915-111.088915z m37.029638 358.206502c0 20.419801-16.619838 37.029638-37.029638 37.029638H665.763498c-20.409801 0-37.019638-16.609838-37.019638-37.029638V665.783498c0-20.409801 16.609838-37.019638 37.019638-37.019638h247.137587c20.409801 0 37.029638 16.609838 37.029638 37.019638v247.117587z m0 0" p-id="1775"></path>
+						</svg>
+					</div>
+				</div>
+			</div>
+			<div class="msg-body">
+				<ul class="list-group">
+					<li v-for="(item,index) in msgList" class="list-group-item" aria-disabled="true">
+						<div class="msg-time">{{msgTime(item.createAt,msgList[index-1]&&msgList[index-1].createAt)}}</div>
+						<div :class="['msg-item',isMe(item)?'me':'other']">
+							<div class="avatar" :style="{background:`rgba(${item.user.replace(/\./g,',')})`}">{{avatar(item)}}</div>
+							<div class="username">{{nikeName(item)}}</div>
+							<div class="content" v-html="item.content"></div>
+						</div>
+					</li>
+					<li class="list-bottom hidden"></li>
+				</ul>
+			</div>
+			<div class="msg-footer input-group">
+				<textarea
+						class="form-control"
+						aria-label="With textarea"
+						autofocus
+						v-model="inputVal"
+						@keypress="keypress"
+						@focus="keypress"
+						@keyup.ctrl.enter="sendMsg"></textarea>
+				<div class="input-group-append">
+					<div class="popover fade bs-popover-left show animated faster fadeInUp" v-if="emptyMsg">
+						<div class="arrow" style="top: 5px;"></div>
+						<h3 class="popover-header"></h3>
+						<div class="popover-body">🙅‍不能发送空白信息</div>
+					</div>
+					<button type="button" class="btn btn-primary btn-outline-default" @click="sendMsg">发送<br/>(Ctrl+Enter)
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="https://cdn.bootcss.com/socket.io/2.2.0/socket.io.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+<!--<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>-->
+<script src="https://cdn.bootcss.com/axios/0.19.2/axios.min.js"></script>
+<script src="https://cdn.bootcss.com/date-fns/1.30.1/date_fns.min.js"></script>
+<script>
+  /**
+   * 上线提醒
+   * 用户列表 (获取用户名-计算机名) √
+   * 支持修改自己的昵称,默认为代理IP
+   * 上拉加载历史,需要页面滑动插件支持
+   * 根据IP区分自己和别人的消息 √
+   * 添加用户默认头像(页面使用IP作为rgba的参数)√
+   * 构建界面,用现有插件兼容移动端
+   * 用户的判断 需要重新构思,设备号/IP(目前用IP作为唯一标识符)
+   * 使用第四节课学到的 单文件储存来做数据持久化,√
+   * 获取IP更改成node服务端获取,不需要用soho √
+   * 用户名策略需要调整,开发user接口用户查村对应的name √
+   * 解决内容不换行的问题 √
+   * 开发撤回消息操作
+   * 回车发送消息,暂时没能解决组合键冲突的问题,暂用Ctrl+Enter发送 √
+   * 构思一下如何化工程化,使用什么框架
+   * 接口文档用什么? [showDoc,easydoc]
+   * */
+  /**
+   * 插件清单
+   * animate.css CSS
+   * io Function
+   * Vue Class
+   * axios Function
+   * dateFns Function
+   */
+  axios.defaults.timeout = 15000;  //超时响应
+  axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'; // 配置请求头（推荐）
+  axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8'; // 配置请求头
+  const socket = io();
+  const vm = new Vue({
+    el: '#app',
+    data: {
+      title: 'rise崛起 的聊天室',
+      msgList: [
+        {
+          "id": "24f7f420-6ebf-11ea-89fc-b1660eda7171",
+          "user": "192.168.254.115",
+          "content": "一条示例消息",
+          "createAt": 1585157782626,
+          "updateAt": 1585157782626
+        }, // 消息结构示例
+      ], // 消息列表默认空
+      inputVal: '', // 文本域
+      online: 0,// 在线人数
+      user: {
+        id: '0',
+        ip: '127.0.0.1',
+        name: 'name',
+        online: false,
+        createAt: 0,
+        updateAt: 0,
+      },
+      users: {
+        '127.0.0.1': {
+          id: '0',
+          ip: '127.0.0.1',
+          name: 'name',
+          online: false,
+          createAt: 0,
+          updateAt: 0,
+        }
+      },
+      emptyMsg: false,
+      menu: false
+    },
+    methods: {
+      // 发送消息
+      sendMsg() {
+        this.emptyMsg = this.inputVal.replace(/\n/g, '') === '';
+        if (this.emptyMsg) return;
+        const msg = {
+          content: this.inputVal.replace(/\n/g, '<br/>'), // 将 换行字符 处理成 换行代码
+          user: this.user.ip,
+        };
+        socket.emit('chat message', msg);
+        this.inputVal = '';
+      },
+      // 消息列表触底
+      scrollToBottom() {
+        let offsetTop = document.querySelector('.list-bottom').offsetTop;
+        console.log('.list-bottom offsetTop', offsetTop);
+        document.querySelector('.msg-body').scrollTo(0, offsetTop);
+      },
+      // 回车发送消息,组合键处理
+      keypress() {
+        this.emptyMsg = false;
+      },
+    },
+    computed: {
+      // 用户昵称
+      nikeName() {
+        return function (msg) {
+          // 有用户名 使用用户名,如果没有那就使用IP
+          return this.users[msg.user] ? this.users[msg.user].name ? this.users[msg.user].name : msg.user : msg.user
+        }
+      },
+      // is me
+      isMe() {
+        return function (msg) {
+          return msg.user === this.user.ip;
+        }
+      },
+      // 显示消息时间
+      msgTime() {
+        return (time, lastTime) => {
+          /**
+           * 在当天就不显示日期了
+           * 与上一条消息的间隔时间 超过2分钟再显示时间
+           */
+          let _time = new Date(time);
+          let isToday = dateFns.isToday(_time);
+          let res = dateFns.format(_time, isToday ? 'HH:mm' : "MM-DD HH:mm");
+          let dm = dateFns.differenceInMinutes(time, lastTime);
+          return dm > 2 ? res : null;
+        }
+			},
+			// avatar 用户头像 用名字生成,后面可能会用canvas工具
+			avatar() {
+				return function (item) {
+					// 字母通过CSS转换成大写
+					let avatar = this.nikeName(item).slice(0, 2)
+					return avatar
+				}
+			}
+		},
+    mounted() {
+      // 开始监听 聊天 事件
+      socket.on('chat message', msg => {
+        this.msgList.push(msg);
+      });
+      // 请求个人信息接口
+      axios.get('/user', {})
+        .then(response => {
+          this.user = response.data;
+          console.log('user', response.data);
+        })
+        .catch(error => console.log(error));
+      // 请求所有用户信息接口 TODO post接口有问题临时改成get
+      axios.get('/users?all=1')
+        .then(response => {
+          this.users = response.data;
+          console.log('users', response.data);
+        })
+        .catch(error => console.log(error));
+      // 请求后端消息数据,[期望:返回后10条,需要配套下拉刷新一起实现]
+      axios.get('/message', {})
+        .then(response => {
+          console.log('响应数据', response.data);
+          if (Object.keys(response.data).length === 0) return console.log('消息记录数量为0');
+          this.msgList = this.msgList.concat(response.data);
+        })
+        .catch(error => console.log(error))
+    },
+    updated() {
+      this.scrollToBottom()
+    },
+  });
+</script>
+</body>
+</html>
