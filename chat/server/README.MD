@@ -13,3 +13,5 @@
 
 ### 前端
 - socket io 
+- vue
+- element UI
