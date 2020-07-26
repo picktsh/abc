@@ -111,21 +111,31 @@
           this.circle = 60
           this.dot = 10
         } else {
-          this.circle = 30
-          this.dot = 5
+          this.circle = 40
+          this.dot = 8
         }
         // 计算行和列的数量-实现全屏铺满
         this.columns = parseInt(window.innerWidth / this.circle)
         this.rows = parseInt(window.innerHeight / this.circle)
+        // 记录一下上一次变化后的尺寸
+        this.lastWidth = window.innerWidth
+        this.lastHeight = window.innerHeight
       },
       clear () {
         this.columns = 0
         this.rows = 0
       },
       resize () {
+        // 手机端,浏览器页头会导致页面尺寸变化,这里忽略掉
+        if (window.innerWidth <= 425 && this.lastHeight !== window.innerHeight) {
+          return
+        }
         this.clear()
         // 先清空页面,布局的操作要等到下一轮再执行 使用$nextTick
         this.$nextTick(this.layout)
+        // 记录一下上一次变化后的尺寸
+        this.lastWidth = window.innerWidth
+        this.lastHeight = window.innerHeight
       }
     },
     computed: {
