@@ -8,26 +8,31 @@
 	<style>
 		*{ margin: 0; padding: 0; box-sizing: border-box; }
 		ul, ol{ list-style: none; }
-		#root{ display: flex; align-items: center; justify-content: center; width: 100vw; height: 100vh; }
+		#root{
+			display: flex; align-items: center; justify-content: center;
+			width: 100vw; height: 100vh;
+			overflow: hidden;
+		}
 		#root .top-bar{ position: absolute; z-index: 100; top: 0; left: 0; }
 		#root .top-bar .range-wrap{ background-color: #EEEEEE33; }
 		#root .top-bar .range-wrap .range{ width: 100vw;}
 		#root .center{ position: relative; }
 		#root .center .arrange{
-			display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
-			width: 1030px;
+			display: flex; align-items: center; justify-content: center;
+			/*flex-wrap: wrap;*/
+			/*width: 1030px;*/
 			/*height: 580px;*/
-			margin: -30px 0 0 -30px;
-			padding: 30px 0 0 30px;
+			/*margin: -30px 0 0 -30px;*/
+			/*padding: 30px 0 0 30px;*/
 			/*background: #292929;*/
 			/*pointer-events: none;*/
 		}
 		#root .center .arrange .circle{
 			position: relative;
-			width: 80px;
-			height: 80px;
-			margin: -30px 0 0 -30px;
-			border-radius: 100px;
+			/*width: 80px;*/
+			/*height: 80px;*/
+			/*margin: -30px 0 0 -30px;*/
+			/*border-radius: 100px;*/
 			border: 1px solid #33333333;
 			animation: rotate 2s linear infinite;
 		}
@@ -36,9 +41,9 @@
 			top: 0;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			width: 10px;
-			height: 10px;
-			border-radius: 10px;
+			/*width: 10px;*/
+			/*height: 10px;*/
+			/*border-radius: 10px;*/
 			/*background: #CE0BE5;*/
 			animation: color 2s linear infinite
 		}
@@ -61,6 +66,23 @@
 	</style>
 </head>
 <body>
+<!--<style>-->
+<!--	#root .center .arrange{-->
+<!--		margin: -30px 0 0 -30px;-->
+<!--		padding: 30px 0 0 30px;-->
+<!--	}-->
+<!--	#root .center .arrange .circle{-->
+<!--		width: 80px;-->
+<!--		height: 80px;-->
+<!--		margin: -30px 0 0 -30px;-->
+<!--		border-radius: 100px;-->
+<!--	}-->
+<!--	#root .center .arrange .circle .dot{-->
+<!--		width: 10px;-->
+<!--		height: 10px;-->
+<!--		border-radius: 10px;-->
+<!--	}-->
+<!--</style>-->
 <div id="root" :style="{ backgroundColor: themeBg }">
 	<div class="top-bar">
 		<div class="range-wrap">
@@ -70,8 +92,22 @@
 	<div class="center">
 		<ul class="arrange" v-for="r1 of rows" :key="r1">
 			<li v-for="c1 of columns" :key="c1">
-				<div class="circle" :style="{animationDelay: c1 + r1 + '00ms'}">
-					<div class="dot" :style="{animationDelay: c1 + r1 + '00ms'}"></div>
+				<div class="circle"
+					 :style="{
+  					  animationDelay: c1 + r1 + '00ms',
+					  width: circle + 'px',
+					  height: circle + 'px',
+					  borderRadius: circle + 'px',
+				     }"
+				>
+					<div class="dot"
+						 :style="{
+						  animationDelay: c1 + r1 + '00ms',
+						  width: dot + 'px',
+						  height: dot + 'px',
+						  borderRadius: dot + 'px',
+						 }"
+					></div>
 				</div>
 			</li>
 		</ul>
@@ -82,18 +118,24 @@
   new Vue({
     el: '#root',
     data: {
-      columns: 20, // 列
-      rows: 10,  // 行
+      columns: 0, // 列数量
+      rows: 0,  // 行数量
       luminance: 20,  // 亮度: 0-100 *2.55
+      circle: 50,  // 运动轨迹的直径
+      dot: 10,  // 小点的直径
     },
     method: {},
     computed: {
-      themeBg: (e) => {
-        let _r = e.luminance * 2.55
-        let _g = e.luminance * 2.55
-        let _b = e.luminance * 2.55
+      themeBg: function () {
+        let _r = this.luminance * 2.55
+        let _g = this.luminance * 2.55
+        let _b = this.luminance * 2.55
         return `rgba(${_r},${_g},${_b},1)`
       }
+    },
+    mounted: function () {
+      this.columns = parseInt(window.innerWidth / this.circle)
+      this.rows = parseInt(window.innerHeight / this.circle)
     },
   })
 </script>
