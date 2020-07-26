@@ -98,25 +98,56 @@
   new Vue({
     el: '#root',
     data: {
-      columns: 0, // 列数量
-      rows: 0,  // 行数量
+      columns: 0, // 列数量;必须是正整数
+      rows: 0,  // 行数量;必须是正整数
       luminance: 20,  // 亮度: 0-100 *2.55
-      circle: 50,  // 运动轨迹的直径
-      dot: 10,  // 小点的直径
+      // circle: 10,  // 运动轨迹的直径;必须>=1
+      // dot: 1,  // 小点的直径;必须>=1
     },
-    method: {},
+    methods: {
+      layout () {
+        // 移动设备上看的话,就显示小一点了
+        if (window.innerWidth >= 425) {
+          this.circle = 60  // 运动轨迹的直径
+          this.dot = 10  // 小点的直径
+        } else {
+          this.circle = 30  // 运动轨迹的直径
+          this.dot = 5  // 小点的直径
+        }
+        // 计算行和列的数量-实现全屏铺满
+        this.columns = parseInt(window.innerWidth / this.circle)
+        this.rows = parseInt(window.innerHeight / this.circle)
+      },
+      clear () {
+        this.columns = 0
+        this.rows = 0
+      },
+      resize () {
+        this.clear()
+        // 先清空页面,布局的操作要等到下一轮再执行 使用$nextTick
+        this.$nextTick(this.layout)
+      }
+    },
     computed: {
-      themeBg: function () {
+      themeBg () {
         let _r = this.luminance * 2.55
         let _g = this.luminance * 2.55
         let _b = this.luminance * 2.55
         return `rgba(${_r},${_g},${_b},1)`
       }
     },
-    mounted: function () {
-      // 实现全屏版本
-      this.columns = parseInt(window.innerWidth / this.circle)
-      this.rows = parseInt(window.innerHeight / this.circle)
+    created () {
+      this.layout()
+    },
+    mounted () {
+      let _this = this
+      window.onresize = function () {
+        _this.resize()
+      }
+    },
+    //注销window.onresize事件
+    destroyed () {
+      window.onresize = null
     },
   })
 </script>
