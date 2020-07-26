@@ -105,14 +105,14 @@
       // dot: 1,  // 小点的直径;必须>=1
     },
     methods: {
-      layout () {
-        // 移动设备上看的话,就显示小一点了
+      layout: function () {
+        // 移动设备上看的话,就显示小一点点
         if (window.innerWidth >= 425) {
-          this.circle = 60  // 运动轨迹的直径
-          this.dot = 10  // 小点的直径
+          this.circle = 60
+          this.dot = 10
         } else {
-          this.circle = 30  // 运动轨迹的直径
-          this.dot = 5  // 小点的直径
+          this.circle = 30
+          this.dot = 5
         }
         // 计算行和列的数量-实现全屏铺满
         this.columns = parseInt(window.innerWidth / this.circle)
