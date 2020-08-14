@@ -28,35 +28,13 @@
 			position: absolute; top: 0; left: 0; transform-origin: center;
 			width: 100%;
 		}
-		.center .circle ul li:nth-child(1){ transform: rotateZ(0deg); }
-		.center .circle ul li:nth-child(2){ transform: rotateZ(30deg); }
-		.center .circle ul li:nth-child(3){ transform: rotateZ(60deg); }
-		.center .circle ul li:nth-child(4){ transform: rotateZ(90deg); }
-		.center .circle ul li:nth-child(5){ transform: rotateZ(120deg); }
-		.center .circle ul li:nth-child(6){ transform: rotateZ(150deg); }
-		.center .circle ul li:nth-child(7){ transform: rotateZ(180deg); }
-		.center .circle ul li:nth-child(8){ transform: rotateZ(210deg); }
-		.center .circle ul li:nth-child(9){ transform: rotateZ(240deg); }
-		.center .circle ul li:nth-child(10){ transform: rotateZ(270deg); }
-		.center .circle ul li:nth-child(11){ transform: rotateZ(300deg); }
-		.center .circle ul li:nth-child(12){ transform: rotateZ(330deg); }
 		.center .circle ul li .dot{
+			position: absolute;
+			top: 0; left: 0; transform: translate(-50%, -50%);
 			width: 15px; height: 15px; background-color: #111111;border-radius: 15px;
 			animation: 1.2s slide infinite ease;
 		}
 		.center .circle ul li .dot{}
-		.center .circle ul li:nth-child(1) .dot{ animation-delay: 0ms; }
-		.center .circle ul li:nth-child(2) .dot{ animation-delay: 600ms; }
-		.center .circle ul li:nth-child(3) .dot{ animation-delay: 1200ms; }
-		.center .circle ul li:nth-child(4) .dot{ animation-delay: 1800ms; }
-		.center .circle ul li:nth-child(5) .dot{ animation-delay: 2400ms; }
-		.center .circle ul li:nth-child(6) .dot{ animation-delay: 3000ms; }
-		.center .circle ul li:nth-child(7) .dot{ animation-delay: 3600ms; }
-		.center .circle ul li:nth-child(8) .dot{ animation-delay: 4200ms; }
-		.center .circle ul li:nth-child(9) .dot{ animation-delay: 4800ms; }
-		.center .circle ul li:nth-child(10) .dot{ animation-delay: 5400ms; }
-		.center .circle ul li:nth-child(11) .dot{ animation-delay: 6000ms; }
-		.center .circle ul li:nth-child(12) .dot{ animation-delay: 6600ms; }
 		@keyframes slide{
 			0%{ margin-left: 0; }
 			50%{ margin-left: 100%; }
@@ -67,54 +45,12 @@
 
 </head>
 <body>
+<h1>圆球错觉</h1>
 <div id="root">
-	<h1>圆球错觉</h1>
 	<div class="center">
 		<div class="circle">
 			<ul>
-				<li>
-					<div class="dot"></div>
-				</li>
-				<li>
-					<div class="dot"></div>
-				</li>
-				<li>
-					<div class="dot"></div>
-				</li>
-				<li>
-					<div class="dot"></div>
-				</li>
-				<li>
-					<div class="dot"></div>
-				</li>
-				<li>
-					<div class="dot"></div>
-				</li>
-				<li>
-					<div class="dot"></div>
-				</li>
-				<li>
-					<div class="dot"></div>
-				</li>
-				<li>
-					<div class="dot"></div>
-				</li>
-				<li>
-					<div class="dot"></div>
-				</li>
-				<li>
-					<div class="dot"></div>
-				</li>
-				<li>
-					<div class="dot"></div>
-				</li>
-			</ul>
-		</div>
-	</div>
-	<div class="center">
-		<div class="circle">
-			<ul>
-				<li v-for="li of number">{{li}}
+				<li v-for="li of number" :style="{transform: `rotateZ(${(li - 1) * (360 / number)}deg)`}">
 					<div class="dot" :style="{'animation-delay': li+'00ms' }"></div>
 				</li>
 			</ul>
