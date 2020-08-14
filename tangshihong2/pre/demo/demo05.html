@@ -32,7 +32,7 @@
 			position: absolute;
 			top: 0; left: 0; transform: translate(-50%, -50%);
 			width: 15px; height: 15px; background-color: #111111;border-radius: 15px;
-			animation: 1.2s slide infinite ease;
+			animation: 3s slide infinite ease-in-out;
 		}
 		.center .circle ul li .dot{}
 		@keyframes slide{
@@ -51,7 +51,7 @@
 		<div class="circle">
 			<ul>
 				<li v-for="li of number" :style="{transform: `rotateZ(${(li - 1) * (360 / number)}deg)`}">
-					<div class="dot" :style="{'animation-delay': li+'00ms' }"></div>
+					<div class="dot" :style="{'animation-delay': li+'00ms','animation-duration': number*.1 + 's'}"></div>
 				</li>
 			</ul>
 		</div>
@@ -62,8 +62,7 @@
   new Vue({
     el: '#root',
     data: {
-      number: 12,  // 圆球个数
-      span: 12,  // 圆球延迟时间跨度
+      number: 18,  // 圆球个数
     }
   })
 </script>
