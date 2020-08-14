@@ -13,6 +13,13 @@
 			width: 100vw; height: 100vh;
 			overflow: hidden;
 		}
+		.panel-wrap{ position: fixed; top: 0; left: 0; min-width: 100vw; }
+		.panel-wrap .panel{ background-color: rgba(50, 50, 50, .1);}
+		.panel-wrap .panel-info{
+			width: 150px; height: 100px;
+			background-color: rgba(50, 50, 50, .1);
+			font-size: 14px;
+		}
 		.center{}
 		.center .circle{
 			position: relative;
@@ -25,16 +32,15 @@
 		}
 		.center .circle ul{ position: relative; width: 100%; }
 		.center .circle ul li{
-			position: absolute; top: 0; left: 0; transform-origin: center;
+			position: absolute; top: 0; left: 0;
+			transform-origin: center;
 			width: 100%;
 		}
 		.center .circle ul li .dot{
-			position: absolute;
-			top: 0; left: 0; transform: translate(-50%, -50%);
+			position: absolute; top: 0; left: 0; transform: translate(-50%, -50%);
 			width: 15px; height: 15px; background-color: #111111;border-radius: 15px;
 			animation: 3s slide infinite ease-in-out;
 		}
-		.center .circle ul li .dot{}
 		@keyframes slide{
 			0%{ margin-left: 0; }
 			50%{ margin-left: 100%; }
@@ -45,12 +51,21 @@
 
 </head>
 <body>
-<h1>圆球错觉</h1>
 <div id="root">
+	<div class="panel-wrap">
+		<div class="panel">
+			<h2>圆球错觉</h2>
+<!--			<input type="number" name="number" v-model="number">-->
+		</div>
+		<ul class="panel-info">
+			<li><span class="info-title">黑点数量: </span><span class="info-value">{{number}}</span></li>
+			<li><span class="info-title">动画速度: </span><span class="info-value">{{number * .1}}s</span></li>
+		</ul>
+	</div>
 	<div class="center">
 		<div class="circle">
 			<ul>
-				<li v-for="li of number" :style="{transform: `rotateZ(${(li - 1) * (360 / number)}deg)`}">
+				<li v-for="li of number" :style="{transform: `rotateZ(${li * (360 / number)}deg)`}">
 					<div class="dot" :style="{'animation-delay': li+'00ms','animation-duration': number*.1 + 's'}"></div>
 				</li>
 			</ul>
