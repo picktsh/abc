@@ -16,6 +16,7 @@
 		.panel-wrap{ position: fixed; top: 0; left: 0; min-width: 100vw; }
 		.panel-wrap .panel{ background-color: rgba(50, 50, 50, .1);}
 		.panel-wrap .panel .number{width: 50px;}
+		.panel-wrap .panel .btn-number{width: 30px;}
 		.panel-wrap .panel-info{
 			width: 150px; height: 100px;
 			background-color: rgba(50, 50, 50, .1);
@@ -56,7 +57,9 @@
 	<div class="panel-wrap">
 		<div class="panel">
 			<h2>圆球错觉</h2>
-			1 ≤ <input class="number" type="number" name="number" v-model="count"> ≤ 48
+			<label>1 ≤<input class="number" type="number" readonly name="number" v-model="count"> ≤ 48</label>
+			<button class="btn-number" @click="count--">-</button>
+			<button class="btn-number" @click="count++">+</button>
 		</div>
 		<ul class="panel-info">
 			<li><span class="info-title">黑点数量: </span><span class="info-value">{{number}} </span></li>
@@ -67,8 +70,9 @@
 	<div class="center">
 		<div class="circle">
 			<ul>
-				<li v-for="li of number" :style="{transform: `rotateZ(${li * (360 / number)}deg)`}">
-					<div class="dot" :style="{'animation-delay': li+'00ms','animation-duration': number*.1 + 's'}"></div>
+				<li v-for="li of number" :class="'ms' + (li - 1) * 100 + 'ms'" :style="{transform: `rotateZ(${(li - 1) * (360 / number)}deg)`}">
+					<div class="dot"
+						 :style="{'animation-delay':    (li - 1) * 100 + 'ms','animation-duration': number / 10 + 's'}"></div>
 				</li>
 			</ul>
 		</div>
@@ -79,9 +83,9 @@
   new Vue({
     el: '#root',
     data: {
-      count: '18',  // 圆球个数,双向绑定需要转成数字类型 1<n<48
-      number: 18,  // 圆球个数,双向绑定需要转成数字类型
-      duration: 3,  // 黑点的一个动画周期持续时间
+      count: 24,  // 圆球个数,双向绑定需要转成数字类型 1<n<48
+      number: 24,  // 圆球个数,双向绑定需要转成数字类型
+      duration: 4,  // 黑点的一个动画周期持续时间
     },
     computed: {
       // number () {
@@ -90,7 +94,7 @@
     },
     watch: {
       count (newValue, oldValue) {
-        console.log(newValue)
+        console.log(newValue, oldValue)
         this.count = newValue <= 0 ? 1 : newValue >= 48 ? 48 : newValue
         this.number = 0
         this.$nextTick(function () {
