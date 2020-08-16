@@ -63,16 +63,16 @@
 		</div>
 		<ul class="panel-info">
 			<li><span class="info-title">黑点数量: </span><span class="info-value">{{number}} </span></li>
-			<li><span class="info-title">动画速度: </span><span class="info-value">{{number / 10}}s</span></li>
+			<li><span class="info-title">动画速度: </span><span class="info-value">{{duration}}s</span></li>
 			<li><span class="info-title">数量范围: </span><span class="info-value">1 ≤ n ≤ 48</span></li>
 		</ul>
 	</div>
 	<div class="center">
 		<div class="circle">
 			<ul>
-				<li v-for="li of number" :class="'ms' + (li - 1) * 100 + 'ms'" :style="{transform: `rotateZ(${(li - 1) * (360 / number)}deg)`}">
+				<li v-for="li of number" :class="'ms' + animationDelay(li - 1) + 'ms'" :style="{transform: `rotateZ(${(li - 1) * (360 / number)}deg)`}">
 					<div class="dot"
-						 :style="{'animation-delay':    (li - 1) * 100 + 'ms','animation-duration': number / 10 + 's'}"></div>
+						 :style="{'animation-delay':    animationDelay(li - 1) + 'ms','animation-duration': duration + 's'}"></div>
 				</li>
 			</ul>
 		</div>
@@ -83,14 +83,19 @@
   new Vue({
     el: '#root',
     data: {
-      count: 24,  // 圆球个数,双向绑定需要转成数字类型 1<n<48
-      number: 24,  // 圆球个数,双向绑定需要转成数字类型
-      duration: 4,  // 黑点的一个动画周期持续时间
+      count: 9,  // 圆球个数,双向绑定需要转成数字类型 1<n<48
+      number: 9,  // 圆球个数,双向绑定需要转成数字类型
+      duration: 3,  // 黑点的一个动画周期持续时间
     },
     computed: {
       // number () {
       //   return Number(this.count)
-      // }
+      // },
+      animationDelay(){
+        return function(index){
+          return this.duration * 1000 / this.number * (index - 1)
+		}
+	  }
     },
     watch: {
       count (newValue, oldValue) {
