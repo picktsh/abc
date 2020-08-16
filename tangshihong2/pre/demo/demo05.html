@@ -61,30 +61,45 @@
 	<div class="panel-wrap">
 		<div class="panel">
 			<h2>圆球错觉</h2>
-			<label>1 ≤<input class="number" type="number" readonly name="number" v-model="count"> ≤ 48</label>
-			<button class="btn-number" @click="count--">-</button>
-			<button class="btn-number" @click="count++">+</button>
+			<label>1 ≤<input class="number" type="number" name="number" v-model="count.value"> ≤ 48</label>
+			<button class="btn-number" @click="count.value--">-</button>
+			<button class="btn-number" @click="count.value++">+</button>
 		</div>
 		<ul class="panel-info">
 			<!--			<li v-for="(value,key) of $data">{{value}} {{key}}</li>-->
 			<!--			<li><span class="info-title">黑点数量: </span><span class="info-value">{{number}} </span></li>-->
 			<!--			<li><span class="info-title">动画速度: </span><span class="info-value">{{duration}}s</span></li>-->
 			<!--			<li><span class="info-title">数量范围: </span><span class="info-value">1 ≤ n ≤ 48</span></li>-->
-			<li>
-				<div class="info-title">黑点数量:</div>
+			<!--			<li>-->
+			<!--				<div class="info-title">黑点数量:</div>-->
+			<!--				<div class="info-value">-->
+			<!--					<label>-->
+			<!--						<span class="show-value">{{count}}</span>-->
+			<!--						<input type="range" name="" v-model="count" max="48" min="1">-->
+			<!--					</label>-->
+			<!--				</div>-->
+			<!--			</li>-->
+			<!--			<li>-->
+			<!--				<div class="info-title">动画速度:</div>-->
+			<!--				<div class="info-value">-->
+			<!--					<label>-->
+			<!--						<span class="show-value">{{duration}}</span>-->
+			<!--						<input type="range" name="" v-model="duration" max="10" min=".5" step=".1">-->
+			<!--					</label>-->
+			<!--				</div>-->
+			<!--			</li>-->
+			<li v-for="item of info">
+				<div class="info-title">{{item}}:</div>
 				<div class="info-value">
 					<label>
-						<span class="show-value">{{count}}</span>
-						<input type="range" name="" v-model="count" max="48" min="1">
-					</label>
-				</div>
-			</li>
-			<li>
-				<div class="info-title">动画速度:</div>
-				<div class="info-value">
-					<label>
-						<span class="show-value">{{duration}}</span>
-						<input type="range" name="" v-model="duration" max="10" min=".5" step=".1">
+						<span class="show-value">{{$data[item].min}}</span>
+						<span class="show-value">{{$data[item].value}}</span>
+						<input type="range" name=""
+							   v-model="$data[item].value"
+							   :max="$data[item].max"
+							   :min="$data[item].min"
+							   :step="$data[item].step">
+						<span class="show-value">{{$data[item].max}}</span>
 					</label>
 				</div>
 			</li>
@@ -93,22 +108,37 @@
 	<div class="center">
 		<div class="circle">
 			<ul>
-				<li v-for="li of number" :class="'ms' + animationDelay(li - 1) + 'ms'" :style="{transform: `rotateZ(${(li - 1) * (360 / number)}deg)`}">
-					<div class="dot"
-						 :style="{'animation-delay':    animationDelay(li - 1) + 'ms','animation-duration': duration + 's'}"></div>
-				</li>
+				<template v-if="display">
+					<li v-for="li of (count.value * 1)"
+						:class="'ms_' + animationDelay(li) "
+						:style="{transform: `rotateZ(${(li - 1) * (360 / count.value)}deg)`}">
+						<div class="dot"
+							 :style="{'animation-delay':    animationDelay(li) + 'ms','animation-duration': duration.value + 's'}"></div>
+					</li>
+				</template>
 			</ul>
 		</div>
 	</div>
 </div>
-<script src="./lib/vue.min.js"></script>
+<script src="./lib/vue.js"></script>
 <script>
   new Vue({
     el: '#root',
     data: {
-      count: 9,  // 圆球个数,双向绑定需要转成数字类型 1<n<48
-      number: 9,  // 圆球个数,双向绑定需要转成数字类型
-      duration: 3,  // 黑点的一个动画周期持续时间
+      count: {
+        value: 12,  // 圆球个数,双向绑定之后是字符串,需要转成数字类型
+        max: 48,
+        min: 1,
+        step: 1,
+      },
+      duration: {
+        value: 5,  // 圆球个数,双向绑定之后是字符串,需要转成数字类型
+        max: 10,
+        min: .5,
+        step: .1,
+      },
+      info: ['count', 'duration'],
+      display: true,  // 每次数量变化的时候 需要重新渲染所有列表,否则动画会不整齐
     },
     computed: {
       // number () {
@@ -116,18 +146,35 @@
       // },
       animationDelay () {
         return function (index) {
-          return this.duration * 1000 / this.number * (index - 1)
+          // 列表下标 默认是从1开始,这里计算成从0开始
+          return this.duration.value * 1000 / this.count.value * (index - 1)
         }
+      },
+    },
+    methods: {
+      // 验证被修改的值
+      validateRange (rule, value) {
+        let amend = value <= rule.min ? rule.min : value >= rule.max ? rule.max : value
+        console.warn(`超出范围: 当前值: ${value} ,已修正为: ${amend}`)
+        return amend
       }
     },
     watch: {
-      count (newValue, oldValue) {
-        console.log(newValue, oldValue)
-        this.count = newValue <= 0 ? 1 : newValue >= 48 ? 48 : newValue
-        this.number = 0
-        this.$nextTick(function () {
-          this.number = Number(newValue)
-        })
+      count: {
+        // 深度监听数据的变化
+        deep: true,
+        handler (newValue, oldValue) {
+          console.log(newValue.value, oldValue.value)
+          // 如果修改后的值不符合要求；将数量限制在规定范围内
+          if (!(this.count.min <= newValue.value && newValue.value <= this.count.max)) {
+            this.count.value = this.validateRange(this.count, oldValue.value)
+            return
+          }
+          this.display = false
+          this.$nextTick(function () {
+            this.display = true
+          })
+        },
       }
     },
   })
