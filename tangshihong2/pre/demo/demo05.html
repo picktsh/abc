@@ -18,10 +18,14 @@
 		.panel-wrap .panel .number{width: 50px;}
 		.panel-wrap .panel .btn-number{width: 30px;}
 		.panel-wrap .panel-info{
-			width: 150px; height: 100px;
+			width: fit-content;
 			background-color: rgba(50, 50, 50, .1);
 			font-size: 14px;
 		}
+		.panel-wrap .panel-info li{ display: flex; }
+		.panel-wrap .panel-info .info-title{ width: 70px; margin-right: 4px; text-align: right; }
+		.panel-wrap .panel-info .info-value{ min-width: 80px; text-align: left; }
+		.panel-wrap .panel-info .info-value .show-value{ display: inline-block; min-width: 20px;}
 		.center{}
 		.center .circle{
 			position: relative;
@@ -62,9 +66,28 @@
 			<button class="btn-number" @click="count++">+</button>
 		</div>
 		<ul class="panel-info">
-			<li><span class="info-title">黑点数量: </span><span class="info-value">{{number}} </span></li>
-			<li><span class="info-title">动画速度: </span><span class="info-value">{{duration}}s</span></li>
-			<li><span class="info-title">数量范围: </span><span class="info-value">1 ≤ n ≤ 48</span></li>
+			<!--			<li v-for="(value,key) of $data">{{value}} {{key}}</li>-->
+			<!--			<li><span class="info-title">黑点数量: </span><span class="info-value">{{number}} </span></li>-->
+			<!--			<li><span class="info-title">动画速度: </span><span class="info-value">{{duration}}s</span></li>-->
+			<!--			<li><span class="info-title">数量范围: </span><span class="info-value">1 ≤ n ≤ 48</span></li>-->
+			<li>
+				<div class="info-title">黑点数量:</div>
+				<div class="info-value">
+					<label>
+						<span class="show-value">{{count}}</span>
+						<input type="range" name="" v-model="count" max="48" min="1">
+					</label>
+				</div>
+			</li>
+			<li>
+				<div class="info-title">动画速度:</div>
+				<div class="info-value">
+					<label>
+						<span class="show-value">{{duration}}</span>
+						<input type="range" name="" v-model="duration" max="10" min=".5" step=".1">
+					</label>
+				</div>
+			</li>
 		</ul>
 	</div>
 	<div class="center">
@@ -91,11 +114,11 @@
       // number () {
       //   return Number(this.count)
       // },
-      animationDelay(){
-        return function(index){
+      animationDelay () {
+        return function (index) {
           return this.duration * 1000 / this.number * (index - 1)
-		}
-	  }
+        }
+      }
     },
     watch: {
       count (newValue, oldValue) {
