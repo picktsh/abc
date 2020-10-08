@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>房地产好价格计算表</title>
+	<style>
+		*{ margin: 0; padding: 0; box-sizing: border-box; }
+		ul, ol{ list-style: none; }
+		.container{ max-width: 100vw; width: 800px; margin: auto; }
+		.table-wrap{ margin: 20px 5px; box-shadow: 0 0 10px #333; border-radius: 2px; text-align: center; font-size: 16px; color: #222; overflow: hidden; }
+		.table-wrap table{ width: 100%; border-color: #4472C4; }
+		.table-wrap thead tr,
+		.table-wrap .table-name{ background-color: #4472C4 !important; font-weight: bold; color: #EEE; }
+		.table-wrap .table-name{ padding: 10px 0;}
+		.table-wrap .table-name .sub-text{ font-size: 14px; color: #FF0; }
+		.table-wrap tr{ line-height: 30px; }
+		.table-wrap tr:nth-child(odd){ background-color: #E9EBF5; }
+		.table-wrap tr:nth-child(even){ background-color: #CFD5EA; }
+		.table-wrap input{ width: 100px; text-align: center; border: none; }
+	</style>
+</head>
+<body>
+<div id="root">
+	<h3>房地产好价格计算表-微淼(网页版)</h3>
+	<sub>唐诗洪 2020/10/8</sub>
+	<div class="container">
+		<div class="table-wrap">
+			<!--固定条件-->
+			<div class="table-name">
+				<div>固定条件</div>
+				<div class="sub-text">（根据实际情况可修改，修改参数仍然可以计算出好价格）</div>
+			</div>
+			<table cellspacing="1">
+				<thead>
+				<tr>
+					<th>序号</th>
+					<th>名称</th>
+					<th>计算值</th>
+					<th>说明</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>1</td>
+					<td>首付比例</td>
+					<td><label><input type="text" v-model="c3"></label></td>
+					<td>默认值</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>贷款比例</td>
+					<td><label><input type="text" v-model="c4" disabled></label></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>银行贷款利率</td>
+					<td><label><input type="text" v-model="c5"></label></td>
+					<td>默认中国的贷款利率</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>贷款期限（年）</td>
+					<td><label><input type="text" v-model="c6"></label></td>
+					<td>默认最长的年限</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>其他费用占租金比例</td>
+					<td><label><input type="text" v-model="c7"></label></td>
+					<td>默认每年的物业费管理费等加起来的成本，占年租金的10%</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>购房产生税费</td>
+					<td><label><input type="text" v-model="c8"></label></td>
+					<td>包含中介费、契税等</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>十年期国债收益率中位值</td>
+					<td><label><input type="text" v-model="c9"></label></td>
+					<td>默认值</td>
+				</tr>
+				</tbody>
+			</table>
+			
+			<!--变动条件-->
+			<div class="table-name">
+				<div>变动条件</div>
+				<div class="sub-text"></div>
+			</div>
+			<table cellspacing="1">
+				<thead>
+				<tr>
+					<th>序号</th>
+					<th>名称</th>
+					<th>计算值</th>
+					<th>说明</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>1</td>
+					<td>房子目前价格(万元)</td>
+					<td><label><input type="text" v-model="c12"></label></td>
+					<td>手动输入，实际值</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>房子面积（平方）</td>
+					<td><label><input type="text" v-model="c13"></label></td>
+					<td>手动输入，实际值</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>单价(元/平方)</td>
+					<td><label><input type="text" v-model="c14" disabled></label></td>
+					<td>自动计算得出</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>月租金（元）</td>
+					<td><label><input type="text" v-model="c15"></label></td>
+					<td>手动输入，实际值</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>等额本息每月还款（元）</td>
+					<td><label><input type="text" v-model="c16" disabled></label></td>
+					<td>自动计算得出</td>
+				</tr>
+				</tbody>
+			</table>
+			
+			<!--计算结果-->
+			<div class="table-name">
+				<div>计算结果</div>
+				<div class="sub-text"></div>
+			</div>
+			<table cellspacing="1">
+				<thead>
+				<tr>
+					<th>序号</th>
+					<th>名称</th>
+					<th>计算值</th>
+					<th>说明</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>1</td>
+					<td>实际净租金收益率</td>
+					<td><label><input type="text" v-model="c19"></label></td>
+					<td>正为生钱资产，负为耗钱资产</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>好价格总价（万元）</td>
+					<td><label><input type="text" v-model="c20"></label></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>单价（元/平方）</td>
+					<td><label><input type="text" v-model="c21"></label></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>售租比</td>
+					<td><label><input type="text" v-model="c22"></label></td>
+					<td>大于540代表存在泡沫</td>
+				</tr>
+				</tbody>
+			</table>
+			
+			<!--具体计算过程-->
+			<div class="table-name">
+				<div>具体计算过程</div>
+				<div class="sub-text"></div>
+			</div>
+			<table cellspacing="1">
+				<thead>
+				<tr>
+					<th></th>
+					<th>事项</th>
+					<th>数值</th>
+					<th>说明</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>条件</td>
+					<td>目前市价</td>
+					<td><label><input type="text" v-model="c25"></label></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>条件</td>
+					<td>贷款总额</td>
+					<td><label><input type="text" v-model="c26"></label></td>
+					<td>自动计算得出</td>
+				</tr>
+				<tr>
+					<td>条件</td>
+					<td>等额本息每月还款</td>
+					<td><label><input type="text" v-model="c27"></label></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>条件</td>
+					<td>每年还本付息金额与贷款总额的比率</td>
+					<td><label><input type="text" v-model="c28"></label></td>
+					<td>自动计算得出</td>
+				</tr>
+				<tr>
+					<td>年租金净额</td>
+					<td>年租金总额</td>
+					<td><label><input type="text" v-model="c29"></label></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>年租金净额</td>
+					<td>其他费用</td>
+					<td><label><input type="text" v-model="c30"></label></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>年租金净额</td>
+					<td>年按揭贷款本息</td>
+					<td><label><input type="text" v-model="c31"></label></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>初始投资现金总额</td>
+					<td>首付</td>
+					<td><label><input type="text" v-model="c32"></label></td>
+					<td>购房的首付</td>
+				</tr>
+				<tr>
+					<td>初始投资现金总额</td>
+					<td>购房产生的税费</td>
+					<td><label><input type="text" v-model="c33"></label></td>
+					<td>自动计算得出</td>
+				</tr>
+				<tr>
+					<td>净租金收益率</td>
+					<td>实际净租金收益率</td>
+					<td><label><input type="text" v-model="c34"></label></td>
+					<td>自动计算得出</td>
+				</tr>
+				<tr>
+					<td>好价格</td>
+					<td>十年期国债收益率中位值</td>
+					<td><label><input type="text" v-model="c35"></label></td>
+					<td>自动计算得出</td>
+				</tr>
+				<tr>
+					<td>好价格</td>
+					<td>对应的最终好价格总价</td>
+					<td><label><input type="text" v-model="c36"></label></td>
+					<td>自动计算得出</td>
+				</tr>
+				<tr>
+					<td>好价格</td>
+					<td>好价格单位均价</td>
+					<td><label><input type="text" v-model="c37"></label></td>
+					<td>自动计算得出</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<script src="lib/vue.js"></script>
+<script>
+  /**
+   * 房地产好价格计算表
+   * 布局需要兼容H5&PC
+   * 严格按照老师给出的表格
+   * 计算问题,百分比统一换算成小数值; 10% === 0.1
+   * 百分比的值需要 n*100/100 避免计算误差
+   */
+  new Vue({
+    el: '#root',
+    data: {
+      // 固定条件
+      c3: 0.3,
+      // c4: '70%', // 计算属性
+      c5: 0.049,
+      c6: 30,
+      c7: 0.1,
+      c8: 0.05,
+      c9: 0.038,
+      // 变动条件
+      c12: 3500000,
+      c13: 130,
+      // c14: 26923, // 计算属性
+      c15: 5000,
+      // c16: 1300.28, // 计算属性
+    },
+    computed: {
+      c4 () {
+        return (100 - this.c3 * 100) / 100
+      },
+      c14 () {
+        return parseInt(this.c12 / this.c13)
+      },
+      c16 () {
+        return 0
+      },
+    },
+  })
+  /**
+   1
+   2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   */
+</script>
+</body>
+</html>
