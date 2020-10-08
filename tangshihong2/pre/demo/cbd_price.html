@@ -52,43 +52,43 @@
 				<tr>
 					<td>1</td>
 					<td>首付比例</td>
-					<td><label><input type="text" v-model="c3"></label></td>
+					<td><label><input type="number" v-model="m_3" max="100" min="0"></label></td>
 					<td>默认值</td>
 				</tr>
 				<tr>
 					<td>2</td>
 					<td>贷款比例</td>
-					<td><label><input type="text" v-model="c4" disabled></label></td>
+					<td><label><input type="number" v-model="m_4" max="100" min="0"></label></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>3</td>
 					<td>银行贷款利率</td>
-					<td><label><input type="text" v-model="c5"></label></td>
+					<td><label><input type="number" v-model="m_5"></label></td>
 					<td>默认中国的贷款利率</td>
 				</tr>
 				<tr>
 					<td>4</td>
 					<td>贷款期限（年）</td>
-					<td><label><input type="text" v-model="c6"></label></td>
+					<td><label><input type="number" v-model="m_6"></label></td>
 					<td>默认最长的年限</td>
 				</tr>
 				<tr>
 					<td>5</td>
 					<td>其他费用占租金比例</td>
-					<td><label><input type="text" v-model="c7"></label></td>
+					<td><label><input type="number" v-model="m_7"></label></td>
 					<td>默认每年的物业费管理费等加起来的成本，占年租金的10%</td>
 				</tr>
 				<tr>
 					<td>6</td>
 					<td>购房产生税费</td>
-					<td><label><input type="text" v-model="c8"></label></td>
+					<td><label><input type="number" v-model="m_8"></label></td>
 					<td>包含中介费、契税等</td>
 				</tr>
 				<tr>
 					<td>7</td>
 					<td>十年期国债收益率中位值</td>
-					<td><label><input type="text" v-model="c9"></label></td>
+					<td><label><input type="number" v-model="m_9"></label></td>
 					<td>默认值</td>
 				</tr>
 				</tbody>
@@ -112,31 +112,31 @@
 				<tr>
 					<td>1</td>
 					<td>房子目前价格(万元)</td>
-					<td><label><input type="text" v-model="c12"></label></td>
+					<td><label><input type="number" v-model="m_12"></label></td>
 					<td>手动输入，实际值</td>
 				</tr>
 				<tr>
 					<td>2</td>
 					<td>房子面积（平方）</td>
-					<td><label><input type="text" v-model="c13"></label></td>
+					<td><label><input type="number" v-model="m_13"></label></td>
 					<td>手动输入，实际值</td>
 				</tr>
 				<tr>
 					<td>3</td>
 					<td>单价(元/平方)</td>
-					<td><label><input type="text" v-model="c14" disabled></label></td>
+					<td> <div class="value">{{format(c14)}}</div> </td>
 					<td>自动计算得出</td>
 				</tr>
 				<tr>
 					<td>4</td>
 					<td>月租金（元）</td>
-					<td><label><input type="text" v-model="c15"></label></td>
+					<td><label><input type="number" v-model="m_15"></label></td>
 					<td>手动输入，实际值</td>
 				</tr>
 				<tr>
 					<td>5</td>
 					<td>等额本息每月还款（元）</td>
-					<td><label><input type="text" v-model="c16" disabled></label></td>
+					<td style="color:red">这个值待计算<div class="value">{{format(c16,2)}}</div> </td>
 					<td>自动计算得出</td>
 				</tr>
 				</tbody>
@@ -160,25 +160,25 @@
 				<tr>
 					<td>1</td>
 					<td>实际净租金收益率</td>
-					<td> <div class="value">{{percent(c19)}}</div> </td>
+					<td> <div class="value">{{format(c19,2,0.01)}}%</div> </td>
 					<td>正为生钱资产，负为耗钱资产</td>
 				</tr>
 				<tr>
 					<td>2</td>
 					<td>好价格总价（万元）</td>
-					<td> <div class="value">{{format(c20,2,10000)}}</div> </td>
+					<td> <div class="value">{{format(c20,2,10000)}}w</div> </td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>3</td>
 					<td>单价（元/平方）</td>
-					<td> <div class="value">{{format(c21,0)}}</div> </td>
+					<td> <div class="value">{{format(c21)}}</div> </td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>4</td>
 					<td>售租比</td>
-					<td> <div class="value">{{format(c22,0)}}</div> </td>
+					<td> <div class="value">{{format(c22)}}</div> </td>
 					<td>大于540代表存在泡沫</td>
 				</tr>
 				</tbody>
@@ -202,13 +202,13 @@
 				<tr>
 					<td>条件</td>
 					<td>目前市价</td>
-					<td> <div class="value">{{c25}}</div> </td>
+					<td> <div class="value">{{format(c25,2,10000)}}w</div> </td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>条件</td>
 					<td>贷款总额</td>
-					<td> <div class="value">{{c26}}</div> </td>
+					<td> <div class="value">{{format(c26,2,10000)}}w</div> </td>
 					<td>自动计算得出</td>
 				</tr>
 				<tr>
@@ -220,7 +220,7 @@
 				<tr>
 					<td>条件</td>
 					<td>每年还本付息金额与贷款总额的比率</td>
-					<td> <div class="value">{{percent(c28)}}</div> </td>
+					<td> <div class="value">{{format(c28,2,0.01)}}%</div> </td>
 					<td>自动计算得出</td>
 				</tr>
 				<tr>
@@ -238,13 +238,13 @@
 				<tr>
 					<td>年租金净额</td>
 					<td>年按揭贷款本息</td>
-					<td> <div class="value">{{format(c31,0)}}</div> </td>
+					<td> <div class="value">{{format(c31)}}</div> </td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>初始投资现金总额</td>
 					<td>首付</td>
-					<td> <div class="value">{{c32}}</div> </td>
+					<td> <div class="value">{{format(c32,2,10000)}}w</div> </td>
 					<td>购房的首付</td>
 				</tr>
 				<tr>
@@ -256,25 +256,25 @@
 				<tr>
 					<td>净租金收益率</td>
 					<td>实际净租金收益率</td>
-					<td> <div class="value">{{percent(c34)}}</div> </td>
+					<td> <div class="value">{{format(c34,2,0.01)}}%</div> </td>
 					<td>自动计算得出</td>
 				</tr>
 				<tr>
 					<td>好价格</td>
 					<td>十年期国债收益率中位值</td>
-					<td> <div class="value">{{percent(c35)}}</div> </td>
+					<td> <div class="value">{{format(c35,3,0.01)}}%</div> </td>
 					<td>自动计算得出</td>
 				</tr>
 				<tr>
 					<td>好价格</td>
 					<td>对应的最终好价格总价</td>
-					<td> <div class="value">{{format(c36,0)}}</div> </td>
+					<td> <div class="value">{{format(c36)}}</div> </td>
 					<td>自动计算得出</td>
 				</tr>
 				<tr>
 					<td>好价格</td>
 					<td>好价格单位均价</td>
-					<td> <div class="value">{{format(c37,0)}}</div> </td>
+					<td> <div class="value">{{format(c37)}}</div> </td>
 					<td>自动计算得出</td>
 				</tr>
 				</tbody>
@@ -295,27 +295,35 @@
     el: '#root',
     data: {
       // ========== 固定条件 ==========
-      c3: 0.3,
-      // c4: '70%', // 计算属性
-      c5: 0.049,
-      c6: 30,
-      c7: 0.1,
-      c8: 0.05,
-      c9: 0.038,
+      m_3: '30',
+	  
+      m_5: '4.9',
+      m_6: '30',
+      m_7: '10',
+      m_8: '5',
+      m_9: '3.8',
       // ========== 变动条件 ==========
-      c12: 3500000,
-      c13: 130,
-      // c14: 26923, // 计算属性
-      c15: 5000,
-      // c16: 1300.28, // 计算属性
+      m_12: '350',
+      m_13: '130',
+	  
+      m_15: '5000',
+	  
     },
     computed: {
-      c4 () {
-        return (100 - this.c3 * 100) / 100
-      },
-      c14 () {
-        return parseInt(this.c12 / this.c13)
-      },
+      // ========== 固定条件 ==========
+	  c3 () {return this.format(this.m_3, 2, 100) },
+      c4 () {return this.format(100 - this.m_3, 2, 100)},
+      m_4 () {return 100 - this.m_3},
+	  c5 () {return this.format(this.m_5, 2, 100) },
+	  c6 () {return Number(this.m_6) },
+	  c7 () {return this.format(this.m_7, 2, 100) },
+	  c8 () {return this.format(this.m_8, 2, 100) },
+	  c9 () {return this.format(this.m_9, 3, 100) },
+	  // ========== 变动条件 ==========
+	  c12 () {return this.m_12 * 10000 },
+	  c13 () {return Number(this.m_13) },
+      c14 () {return parseInt(this.c12 / this.c13)},
+	  c15 () {return Number(this.m_15) },
       // c16 () {return this.PMT(this.c5 / 12, this.c6 * 12, this.c26) * -1},
       c16 () {return 13002.8},
 	  // ========== 计算结果 ==========
@@ -351,7 +359,7 @@
        * @param Rate 倍数,用于单位换算 元=>万元 : 10000
        * @returns {number}
        */
-      format (value, float = 2, Rate = 1) {
+      format (value, float = 0, Rate = 1) {
         return Math.round(value / Rate * 10 ** float) / 10 ** float
       },
       percent (value) {
