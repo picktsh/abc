@@ -20,7 +20,8 @@
 		.table-wrap tr{ line-height: 30px; }
 		.table-wrap tr:nth-child(odd){ background-color: #E9EBF5; }
 		.table-wrap tr:nth-child(even){ background-color: #CFD5EA; }
-		.table-wrap input{ width: 100px; text-align: center; border: none; }
+		.table-wrap input{ width: 100px; border: none; text-align: center; font-size: 16px; color: #f0f; }
+		.table-wrap .value{ width: 100px; margin: auto; padding: 0 5px; text-align: right; color: blue; }
 	</style>
 </head>
 <body>
@@ -159,25 +160,25 @@
 				<tr>
 					<td>1</td>
 					<td>实际净租金收益率</td>
-					<td><label><input type="text" v-model="c19"></label></td>
+					<td> <div class="value">{{percent(c19)}}</div> </td>
 					<td>正为生钱资产，负为耗钱资产</td>
 				</tr>
 				<tr>
 					<td>2</td>
 					<td>好价格总价（万元）</td>
-					<td><label><input type="text" v-model="c20"></label></td>
+					<td> <div class="value">{{format(c20,2,10000)}}</div> </td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>3</td>
 					<td>单价（元/平方）</td>
-					<td><label><input type="text" v-model="c21"></label></td>
+					<td> <div class="value">{{format(c21,0)}}</div> </td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>4</td>
 					<td>售租比</td>
-					<td><label><input type="text" v-model="c22"></label></td>
+					<td> <div class="value">{{format(c22,0)}}</div> </td>
 					<td>大于540代表存在泡沫</td>
 				</tr>
 				</tbody>
@@ -201,79 +202,79 @@
 				<tr>
 					<td>条件</td>
 					<td>目前市价</td>
-					<td><label><input type="text" v-model="c25"></label></td>
+					<td> <div class="value">{{c25}}</div> </td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>条件</td>
 					<td>贷款总额</td>
-					<td><label><input type="text" v-model="c26"></label></td>
+					<td> <div class="value">{{c26}}</div> </td>
 					<td>自动计算得出</td>
 				</tr>
 				<tr>
 					<td>条件</td>
 					<td>等额本息每月还款</td>
-					<td><label><input type="text" v-model="c27"></label></td>
+					<td> <div class="value">{{c27}}</div> </td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>条件</td>
 					<td>每年还本付息金额与贷款总额的比率</td>
-					<td><label><input type="text" v-model="c28"></label></td>
+					<td> <div class="value">{{percent(c28)}}</div> </td>
 					<td>自动计算得出</td>
 				</tr>
 				<tr>
 					<td>年租金净额</td>
 					<td>年租金总额</td>
-					<td><label><input type="text" v-model="c29"></label></td>
+					<td> <div class="value">{{c29}}</div> </td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>年租金净额</td>
 					<td>其他费用</td>
-					<td><label><input type="text" v-model="c30"></label></td>
+					<td> <div class="value">{{c30}}</div> </td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>年租金净额</td>
 					<td>年按揭贷款本息</td>
-					<td><label><input type="text" v-model="c31"></label></td>
+					<td> <div class="value">{{format(c31,0)}}</div> </td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>初始投资现金总额</td>
 					<td>首付</td>
-					<td><label><input type="text" v-model="c32"></label></td>
+					<td> <div class="value">{{c32}}</div> </td>
 					<td>购房的首付</td>
 				</tr>
 				<tr>
 					<td>初始投资现金总额</td>
 					<td>购房产生的税费</td>
-					<td><label><input type="text" v-model="c33"></label></td>
+					<td> <div class="value">{{c33}}</div> </td>
 					<td>自动计算得出</td>
 				</tr>
 				<tr>
 					<td>净租金收益率</td>
 					<td>实际净租金收益率</td>
-					<td><label><input type="text" v-model="c34"></label></td>
+					<td> <div class="value">{{percent(c34)}}</div> </td>
 					<td>自动计算得出</td>
 				</tr>
 				<tr>
 					<td>好价格</td>
 					<td>十年期国债收益率中位值</td>
-					<td><label><input type="text" v-model="c35"></label></td>
+					<td> <div class="value">{{percent(c35)}}</div> </td>
 					<td>自动计算得出</td>
 				</tr>
 				<tr>
 					<td>好价格</td>
 					<td>对应的最终好价格总价</td>
-					<td><label><input type="text" v-model="c36"></label></td>
+					<td> <div class="value">{{format(c36,0)}}</div> </td>
 					<td>自动计算得出</td>
 				</tr>
 				<tr>
 					<td>好价格</td>
 					<td>好价格单位均价</td>
-					<td><label><input type="text" v-model="c37"></label></td>
+					<td> <div class="value">{{format(c37,0)}}</div> </td>
 					<td>自动计算得出</td>
 				</tr>
 				</tbody>
@@ -293,7 +294,7 @@
   new Vue({
     el: '#root',
     data: {
-      // 固定条件
+      // ========== 固定条件 ==========
       c3: 0.3,
       // c4: '70%', // 计算属性
       c5: 0.049,
@@ -301,7 +302,7 @@
       c7: 0.1,
       c8: 0.05,
       c9: 0.038,
-      // 变动条件
+      // ========== 变动条件 ==========
       c12: 3500000,
       c13: 130,
       // c14: 26923, // 计算属性
@@ -315,22 +316,49 @@
       c14 () {
         return parseInt(this.c12 / this.c13)
       },
-      c16 () {
-        return 0
-      },
+      // c16 () {return this.PMT(this.c5 / 12, this.c6 * 12, this.c26) * -1},
+      c16 () {return 13002.8},
+	  // ========== 计算结果 ==========
+      c19 () {return this.c34},
+      c20 () {return this.c36},
+      c21 () {return this.c37},
+      c22 () {return this.c12 / this.c15},
+	  // ========== 具体计算过程 ==========
+      c25 () {return this.c12},
+      c26 () {return this.c12 * this.c4},
+      c27 () {return this.c16},
+      c28 () {return this.c27 * 12 / this.c26},
+      c29 () {return this.c15 * 12},
+      c30 () {return this.c29 * this.c7},
+      c31 () {return this.c25 * this.c4 * this.c28},
+      c32 () {return this.c25 * this.c3},
+      c33 () {return this.c25 * this.c8},
+      c34 () {return (this.c29 - this.c30 - this.c31) / (this.c32 + this.c33)},
+      c35 () {return this.c9},
+      c36 () {return (this.c29 - this.c30) / ((this.c4 * this.c28) + ((this.c3 + this.c8) * this.c9))},
+      c37 () {return this.c36 / this.c13},
     },
+    methods: {
+      PMT (rate, nper, pv, fv, type) {
+        // console.log(rate, nper, pv, fv, type)
+        return pv * (rate * (1 + rate) ** nper) / ((1 + rate) ** (nper - 1))
+      
+      },
+      /**
+	   * 数字格式化
+       * @param value 数值
+       * @param float 小数位数
+       * @param Rate 倍数,用于单位换算 元=>万元 : 10000
+       * @returns {number}
+       */
+      format (value, float = 2, Rate = 1) {
+        return Math.round(value / Rate * 10 ** float) / 10 ** float
+      },
+      percent (value) {
+        return (Math.round(value * 10000) / 100) + '%'
+      },
+    }
   })
-  /**
-   1
-   2
-   3
-   4
-   5
-   6
-   7
-   8
-   9
-   */
 </script>
 </body>
 </html>
