@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background: #000;
+		}
+		@keyframes runing{
+			0%{
+				transform: rotate(23.6deg) rotateX(-23.6deg) rotateY(0deg);
+			}
+			100%{
+				transform: rotate(23.6deg) rotateX(-23.6deg) rotateY(360deg);
+			}
+		}
+		.big{
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			/*position: relative;*/
+			width: 1000px;
+			height: 1000px;
+			transform: translate(-50%, -55%);
+			/*background: seagreen;*/
+		}
+		.bigbox{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 600px;
+			height: 600px;
+			/*background: seagreen;*/
+			transform: translate(-50%, -50%);
+			perspective: 1200px;
+		}
+		.box{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			/*background: orangered;*/
+			transform-style: preserve-3d;
+			animation: runing 15s linear infinite;
+		}
+		.box div{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			color: #FFF;
+			border: 1px solid #FFF;
+			border-radius: 50%;
+		}
+
+		.box div:nth-child(1){
+
+		}
+		.box div:nth-child(2){
+			transform: rotateY(22.5deg);
+		}
+		.box div:nth-child(3){
+			transform: rotateY(45deg);
+		}
+		.box div:nth-child(4){
+			transform: rotateY(67.5deg);
+		}
+		.box div:nth-child(5){
+			transform: rotateY(90deg);
+		}
+		.box div:nth-child(6){
+			transform: rotateY(112.5deg);
+		}
+		.box div:nth-child(7){
+			transform: rotateY(135deg);
+		}
+		.box div:nth-child(8){
+			transform: rotateY(157.5deg);
+		}
+		.box div:nth-child(9){
+			transform: translateY(-300px) rotateX(90deg) scale(0);
+		}
+		.box div:nth-child(10){
+			transform: translateY(-225px) rotateX(90deg) scale(.66);
+		}
+		.box div:nth-child(11){
+			transform: translateY(-150px) rotateX(90deg) scale(.865);
+		}
+		.box div:nth-child(12){
+			transform: translateY(-75px) rotateX(90deg) scale(.97);
+		}
+		.box div:nth-child(13){
+			transform: translateY(0) rotateX(90deg) scale(1);
+		}
+		.box div:nth-child(14){
+			transform: translateY(75px) rotateX(90deg) scale(.97);
+		}
+		.box div:nth-child(15){
+			transform: translateY(150px) rotateX(90deg) scale(.865);
+		}
+		.box div:nth-child(16){
+			transform: translateY(225px) rotateX(90deg) scale(.66);
+		}
+		.box div:nth-child(17){
+			transform: translateY(300px) rotateX(90deg) scale(0);
+		}
+		.but{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 3px;
+			height: 680px;
+			background: #FFF;
+			border-radius: 0;
+			transform: translate(-50%, -50%) rotate(23.6deg);
+		}
+		.fix{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 680px;
+			height: 680px;
+			z-index: 99;
+			/*background: seagreen;*/
+			/*opacity: .5;*/
+			border-radius: 50%;
+			border-top: 20px solid #FFF;
+			border-right: 20px solid #FFF;
+			border-left: 20px solid transparent;
+			border-bottom: 20px solid transparent;
+			transform: translate(-52%, -51%) rotate(68.6deg);
+		}
+		.foot{
+			position: absolute;
+			top: 850px;
+			left: 50%;
+			transform: translate(-50%, 0);
+			z-index: 3;
+			width: 30px;
+			height: 60px;
+			background: #FFF;
+		}
+		.footer{
+			position: absolute;
+			top: 765px;
+			left: 50%;
+			width: 300px;
+			height: 300px;
+			border: solid 1px black;
+			background: #FFF;
+			border-radius: 50%;
+			transform: translate(-50%, 0) rotateX(80deg);
+		}
+		.footer:after{
+			content: '';
+			display: inline-block;
+			width: 300px;
+			height: 320px;
+			position: relative;
+			opacity: 0.8;
+			background: #FFF;
+			top: 50%;
+			left: -0.5px;
+			border-left: 1px solid #000;
+			border-right: 1px solid #000;
+			border-bottom: 1px solid #000;
+			border-bottom-left-radius: 45%;
+			border-bottom-right-radius: 45%;
+		}
+	</style>
+</head>
+<body>
+<div class="big">
+	<div class="bigbox">
+		<div class="box">
+			
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="but"></div>
+	</div>
+	<div class="fix"></div>
+	<div class="foot"></div>
+	<div class="footer"></div>
+</div>
+</body>
+</html>
