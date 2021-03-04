@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		#app{ }
+		#app .container{
+			display: flex;
+			width: 100%;
+			min-height: calc(100vh - 16px);
+			justify-content: center;
+			align-items: center;
+		}
+		#app .container .box{
+			text-align: right;
+		}
+	</style>
+</head>
+<body>
+
+<div id="app">
+	<div class="container">
+		<div class="box">
+			<div class="input-group">
+				<select name="" @change="change1">
+					<template v-for="o in option">
+						<option :value="o.id" :selected="selected1===o.id">{{o.name}}</option>
+					</template>
+				</select>
+				<select name="" @change="change2">
+					<option :value="'0000'" :selected="selected2==='0000'">请选择</option>
+					<template v-for="(c,i) in option[selected1].child">
+						<option :value="c.id" :selected="selected2===c.id">{{c.name}}</option>
+					</template>
+				</select>
+			</div>
+			<div class="input-group">
+				<label>输入T/C值<input type="text"></label>
+			</div>
+			<div class="input-group">
+				<label>输入样本系数<input type="text"></label>
+			</div>
+			<div class="input-group">
+				<input type="button" value="计算">
+			</div>
+			<div class="input-group">
+				<label>结果值<input type="text" readonly></label>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--<script src="./lib/vue.js"></script>-->
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      selected1: '1000',
+      selected2: '0000',
+      option: {
+        1000: {
+          id: 1000,
+          name: '加法',
+          child: {
+            1001: {
+              id: 1001,
+              name: 'a+b',
+              function (value1, value2) {
+                /*这里是一堆具体计算的逻辑; */
+                return value1 + value2
+              },
+            },
+            1002: {
+              id: 1002,
+              name: 'a+b+b',
+              function (value1, value2) {
+                /*这里是一堆具体计算的逻辑; */
+                return value1 + value2 + value2
+              },
+            },
+          }
+        },
+        2000: {
+          id: 2000,
+          name: '减法',
+          child: {
+            2001: {
+              id: 2001,
+              name: 'a-b',
+              function (value1, value2) {
+                /*这里是一堆具体计算的逻辑; */
+                return value1 - value2
+              },
+            },
+            2002: {
+              id: 2002,
+              name: 'a-b-b',
+              function (value1, value2) {
+                /*这里是一堆具体计算的逻辑; */
+                return value1 - value2 - value2
+              },
+            },
+          }
+        },
+      },
+    },
+    methods: {
+      change1 (e) {
+        this.selected1 = e.target.value
+        this.selected2 = '0000'
+        console.log('selected1 选框1', this.selected1)
+      },
+      change2 (e) {
+        this.selected2 = e.target.value
+        console.log('selected2 选框2', this.selected2)
+      },
+    },
+  })
+</script>
+</body>
+</html>
