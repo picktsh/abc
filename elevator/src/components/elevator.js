@@ -27,7 +27,7 @@ const M = {
   doorSpeed: 3000,//关门速度<Number>(ms)
 }
 // 模拟数据结构
-let mansin = {
+export const mansion = {
   id: 0,
   name: 'M_0',//大厦的序列
   storeyHeight: M.storeyHeight,
@@ -84,6 +84,7 @@ let mansin = {
 // 一个建筑类
 class Mansion {
   constructor (props) {
+    this._props = props
     this.storeyHeight = M.storeyHeight
     this.elevatorNumber = M.elevatorNumber
     this.doorSpeed = M.doorSpeed
