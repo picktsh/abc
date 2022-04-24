@@ -22,18 +22,18 @@ export class Elevator extends React.Component {
       isWaitingForElevatorToStopForPassengerToStopToStop: false
     }
   }
-  
+
   componentDidMount () {
     this.updateElevator()
     this.interval = setInterval(() => {
       this.updateElevator()
     }, 1000)
   }
-  
+
   componentWillUnmount () {
     clearInterval(this.interval)
   }
-  
+
   updateElevator () {
     if (this.state.isMoving) {
       if (this.state.currentFloor === this.state.destination) {
@@ -48,7 +48,7 @@ export class Elevator extends React.Component {
       }
     }
   }
-  
+
   render () {
     const {
       currentFloor,
