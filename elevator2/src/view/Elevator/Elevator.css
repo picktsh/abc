@@ -1,6 +1,8 @@
 .elevator{width: 100vw;height: 100vh;display: flex;flex-direction: column;justify-content: center;align-items: center;}
 .elevator .elevator-content{}
 .elevator .elevator-content .panel{}
-.elevator .elevator-content .floor-wrap{ display: flex; flex-direction: column-reverse; }
-.elevator .elevator-content .floor-wrap li{ display: flex; flex-direction: row; }
-.elevator .elevator-content .floor-wrap li .number{ min-width: 20px; text-align: right; }
+.elevator .elevator-content .floor-wrap{ display: flex; flex-direction: column-reverse; margin: 0; padding: 0; list-style: none; }
+.elevator .elevator-content .floor-wrap li{ display: flex; flex-direction: row; font-size: 24px }
+.elevator .elevator-content .floor-wrap li .current-tip{ }
+.elevator .elevator-content .floor-wrap li .number{ min-width: 40px; text-align: right; }
+.elevator .elevator-content .floor-wrap li.current .current-tip{ color: #52c41a; }

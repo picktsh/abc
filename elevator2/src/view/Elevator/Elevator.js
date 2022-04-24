@@ -1,4 +1,5 @@
 import React from 'react'
+import { ClockCircleFilled, DownCircleFilled, UpCircleFilled } from '@ant-design/icons'
 
 /**
  * @classdesc
@@ -74,10 +75,11 @@ export class Elevator extends React.Component {
             {/* this.floor 转换成数组 */}
             {[...Array(this.state.floor).keys()].map(floor => (
               <li key={floor} className={`${currentFloor === floor + 1 ? 'current' : ''} ${destination === floor + 1 ? 'destination' : ''}`}>
+                <div className="current-tip"><ClockCircleFilled /></div>
                 <div className="number">{floor + 1}</div>
                 <div className="buttons">
-                  <button className="btn-up">上</button>
-                  <button className="btn-down">下</button>
+                  <UpCircleFilled className="btn-up" />
+                  <DownCircleFilled className="btn-down"/>
                 </div>
               </li>
             ))}
