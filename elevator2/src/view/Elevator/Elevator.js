@@ -35,6 +35,24 @@ export class Elevator extends React.Component {
     clearInterval(this.interval)
   }
 
+  // 楼层上按钮
+  onFloorUp = () => {
+    if (this.state.currentFloor < this.state.floor) {
+      this.setState({
+        currentFloor: this.state.currentFloor + 1
+      })
+    }
+  }
+
+  // 楼层下按钮
+  onFloorDown = () => {
+    if (this.state.currentFloor > 1) {
+      this.setState({
+        currentFloor: this.state.currentFloor - 1
+      })
+    }
+  }
+
   updateElevator () {
     if (this.state.isMoving) {
       if (this.state.currentFloor === this.state.destination) {
@@ -78,8 +96,8 @@ export class Elevator extends React.Component {
                 <div className="current-tip"><ClockCircleFilled /></div>
                 <div className="number">{floor + 1}</div>
                 <div className="buttons">
-                  <UpCircleFilled className="btn-up" />
-                  <DownCircleFilled className="btn-down"/>
+                  <UpCircleFilled className="btn-up" onClick={() => this.onFloorUp()} />
+                  <DownCircleFilled className="btn-down" onClick={() => this.onFloorDown()}/>
                 </div>
               </li>
             ))}
