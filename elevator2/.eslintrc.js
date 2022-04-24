@@ -7,18 +7,15 @@ module.exports = {
     'plugin:react/recommended',
     'standard'
   ],
-  parser: '@typescript-eslint/parser',
+  // parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true
-    },
+    ecmaFeatures: { jsx: true },
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
   plugins: [
-    'react',
-    '@typescript-eslint'
+    'react'
+    // '@typescript-eslint'
   ],
-  rules: {
-  }
+  rules: {}
 }
