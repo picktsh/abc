@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>2048 Game - Play 2048 Game Online</title>
+	<link rel="stylesheet" href="css/fonts/clear-sans.css?v=2020021701" as="style">
+	<link rel="preload" href="css/fonts/ClearSans-Bold-webfont.woff" as="font">
+	<link rel="preload" href="css/fonts/ClearSans-Regular-webfont.woff" as="font">
+	<link href="css/main.css?v=2021080501" rel="stylesheet" type="text/css">
+	<link href="css/flag-icon.css" rel="stylesheet" type="text/css">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="apple-touch-icon" href="meta/apple-touch-icon.webp">
+	<style>
+		.score-container:after{
+			content: "Score";
+		}
+
+		.best-container:after{
+			content: "Best";
+		}
+	</style>
+	<meta property="og:image" content="meta/apple-touch-icon.png"/>
+	<meta name="description" content="👾 2048. This is the classic version of 2048 game. Join the numbers and get to the 2048 tile. Play 2048 online for free here."/>
+	<meta property="og:description" content="👾 Join the numbers and get to the 2048 tile! Careful: this game is extremely addictive!"/>
+	<meta name="twitter:description" content="Join the numbers and get to the 2048 tile! Careful: this game is extremely addictive!"/>
+	<meta name="twitter:card" content="app"/>
+	<meta name="twitter:site" content="2048game.com"/>
+	<meta name="twitter:title" content="2048"/>
+	<meta name="twitter:url" content="https://2048game.com"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+<div class="mobile-top"></div>
+<div class="container">
+	<div class="heading">
+		<h1 class="title"><a href="/">2048</a></h1>
+		<div class="scores-container">
+			<div class="score-container">0</div>
+			<div class="best-container">0</div>
+		</div>
+	</div>
+	<div class="game-intro">
+		<a class="restart-button">New Game</a>
+		<h2 class="subtitle">Play <strong>2048 Game</strong> Online</h2>
+		<div class="above-game">
+			<p>Join the numbers and get to the <strong>2048 tile!</strong></p>
+		</div>
+	</div>
+	<div class="game-container">
+		<div class="game-message">
+			<p></p>
+			<div class="lower">
+				<a class="keep-playing-button">Keep playing</a>
+				<a class="retry-button">Try again</a>
+				<div class="score-sharing">
+				</div>
+			</div>
+		</div>
+		<div class="grid-container">
+			<div class="grid-row">
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+			</div>
+			<div class="grid-row">
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+			</div>
+			<div class="grid-row">
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+			</div>
+			<div class="grid-row">
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+				<div class="grid-cell"></div>
+			</div>
+		</div>
+		<div class="tile-container">
+		</div>
+	</div>
+</div>
+
+<script src="js/bind_polyfill.js" type="d186bb9d8ad2135cfaf68b97-text/javascript"></script>
+<script src="js/classlist_polyfill.js" type="d186bb9d8ad2135cfaf68b97-text/javascript"></script>
+<script src="js/animframe_polyfill.js" type="d186bb9d8ad2135cfaf68b97-text/javascript"></script>
+<script src="js/keyboard_input_manager.js" type="d186bb9d8ad2135cfaf68b97-text/javascript"></script>
+<script src="js/html_actuator_local.js" type="d186bb9d8ad2135cfaf68b97-text/javascript"></script>
+<script src="js/grid.js" type="d186bb9d8ad2135cfaf68b97-text/javascript"></script>
+<script src="js/tile.js" type="d186bb9d8ad2135cfaf68b97-text/javascript"></script>
+<script src="js/local_storage_manager.js" type="d186bb9d8ad2135cfaf68b97-text/javascript"></script>
+<script src="js/game_manager.js" type="d186bb9d8ad2135cfaf68b97-text/javascript"></script>
+<script src="js/application.js" type="d186bb9d8ad2135cfaf68b97-text/javascript"></script>
+
+<script src="js/rocket-loader.min.js" data-cf-settings="d186bb9d8ad2135cfaf68b97-|49" defer=""></script>
+</body>
+</html>
